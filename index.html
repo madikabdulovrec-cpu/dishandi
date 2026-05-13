@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dishandi SPA — баня с личным парильщиком в Алматы</title>
+<meta name="description" content="Программа на 4–6 часов: банщик парит лично 25 минут каждого, две бани, холодная купель, горячий чан, обед на компанию. Без алкоголя. Бронирование: +7 707 032 0577" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Manrope', sans-serif;
+  background: #1c1410;
+  color: #ede4d3;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+em, i { font-style: normal; }
+
+:root {
+  --bg: #1c1410;
+  --bg-deep: #15100c;
+  --bg-card: #251a14;
+  --bg-elev: #2e2218;
+  --gold: #d9b779;
+  --gold-bright: #e8c990;
+  --gold-dim: #b89a5e;
+  --cream: #ede4d3;
+  --muted: #a08775;
+  --border: rgba(217, 183, 121, 0.18);
+  --border-strong: rgba(217, 183, 121, 0.35);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+}
+.accent { color: var(--gold); }
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.eyebrow::before { content: '— '; opacity: 0.6; }
+.section-title {
+  font-size: clamp(34px, 4.8vw, 56px);
+  margin-bottom: 20px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.section-subtitle {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 680px;
+  margin-bottom: 64px;
+  line-height: 1.7;
+}
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+section { padding: 130px 0; position: relative; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  font-weight: 500;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: all .3s ease;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+  color: #1c1410;
+  box-shadow: 0 10px 30px rgba(217, 183, 121, 0.2);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(217, 183, 121, 0.35); }
+.btn-ghost {
+  border: 1px solid var(--border-strong);
+  color: var(--cream);
+  background: rgba(217, 183, 121, 0.04);
+}
+.btn-ghost:hover { background: rgba(217, 183, 121, 0.1); border-color: var(--gold); }
+.btn-wa {
+  background: #25d366;
+  color: white;
+}
+.btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+/* ---------- NAV ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 0;
+  transition: all .3s ease;
+}
+.nav.scrolled {
+  background: rgba(28, 20, 16, 0.92);
+  backdrop-filter: blur(20px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo {
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--cream);
+  display: flex; align-items: center; gap: 12px;
+  letter-spacing: 0.06em;
+}
+.logo-mark {
+  width: 42px; height: 42px;
+  position: relative;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-mark::after {
+  content: '';
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.logo-text { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 18px; letter-spacing: 0.22em; }
+.logo-tag { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); display: block; margin-top: 3px; font-weight: 400; }
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: 13px; color: var(--cream);
+  transition: color .2s ease;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transform-origin: right;
+  transition: transform .3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav-cta { display: flex; align-items: center; gap: 16px; }
+.nav-phone { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.nav-phone span { color: var(--gold); }
+.burger { display: none; flex-direction: column; gap: 5px; }
+.burger span { width: 24px; height: 2px; background: var(--cream); }
+
+/* ---------- HERO ---------- */
+.hero {
+  min-height: 100vh;
+  padding: 0;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(28,20,16,0.6) 0%, rgba(28,20,16,0.92) 100%),
+    url('banya_content/01_photos/IMG_5193.JPG') center/cover;
+  z-index: 0;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(217, 183, 121, 0.12) 0%, transparent 55%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 100px;
+  max-width: 1280px;
+  width: 100%;
+  text-align: left;
+}
+.hero h1 {
+  font-size: clamp(32px, 4.6vw, 60px);
+  line-height: 1.1;
+  margin: 28px 0 0;
+  font-weight: 200;
+  letter-spacing: -0.015em;
+  max-width: 100%;
+}
+.hero h1 .h1-line {
+  display: block;
+  white-space: nowrap;
+}
+.hero-divider {
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.55;
+  margin: 52px 0;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 680px;
+  margin: 0 0 56px;
+  line-height: 1.85;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 88px;
+  justify-content: flex-start;
+}
+.hero-meta {
+  display: flex;
+  gap: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  justify-content: flex-start;
+  max-width: 920px;
+  margin: 0;
+}
+.hero-meta-item { text-align: left; }
+.hero-meta-item .num {
+  font-family: 'Manrope', sans-serif;
+  font-size: 42px;
+  color: var(--gold);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.hero-meta-item .num small { font-size: 18px; color: var(--gold); font-family: 'Manrope', sans-serif; font-weight: 300; }
+.hero-meta-item .lbl {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+.scroll-hint {
+  position: absolute; bottom: 32px; right: 32px;
+  z-index: 2;
+  font-size: 10px; letter-spacing: 0.35em;
+  color: var(--muted);
+  text-transform: uppercase;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 14px;
+}
+.scroll-hint::after {
+  content: ''; width: 1px; height: 50px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1.2); transform-origin: top; }
+}
+
+/* ---------- WHY-US SECTION ---------- */
+.whyus {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.whyus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.whyus-text h2 {
+  font-size: clamp(36px, 4.8vw, 52px);
+  margin-bottom: 28px;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.whyus-text p {
+  color: var(--muted);
+  font-size: 17px;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+.whyus-text p strong { color: var(--cream); font-weight: 500; }
+.whyus-image {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: url('banya_content/01_photos/IMG_5198.JPG') center/cover;
+}
+.whyus-image::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(28,20,16,0.5) 100%);
+}
+.whyus-image-cap {
+  position: absolute; bottom: 28px; left: 28px; right: 28px;
+  z-index: 2;
+  color: var(--cream);
+}
+.whyus-image-cap .title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.whyus-image-cap .sub { color: var(--gold); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
+
+/* ---------- TWO TRADITIONS ---------- */
+.traditions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.tradition {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  position: relative;
+  transition: all .4s ease;
+}
+.tradition:hover { border-color: var(--gold); transform: translateY(-4px); }
+.tradition-img {
+  height: 280px;
+  background-size: cover; background-position: center;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+.tradition-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(37,26,20,0.85) 100%);
+}
+.tradition-body { padding: 36px; }
+.tradition-num {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+.tradition-body h3 { font-size: 32px; margin-bottom: 16px; }
+.tradition-body p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+.tradition-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+.tradition-tags span {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--muted);
+}
+
+/* ---------- HOW IT GOES ---------- */
+.how {
+  background: var(--bg-deep);
+  position: relative;
+  overflow: hidden;
+}
+.how::before {
+  content: '';
+  position: absolute;
+  top: -10%; right: -5%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(217, 183, 121, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.how-header { text-align: center; margin-bottom: 80px; }
+.how-header .section-title { max-width: 800px; margin: 0 auto 20px; }
+.how-header .section-subtitle { margin: 0 auto; }
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+.how-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.how-step {
+  text-align: center;
+  padding: 0 16px;
+  position: relative;
+}
+.how-step-num {
+  width: 64px; height: 64px;
+  background: var(--bg-deep);
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  color: var(--gold);
+  position: relative;
+  z-index: 2;
+  font-weight: 300;
+}
+.how-step-time { font-size: 11px; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+.how-step h4 { font-size: 19px; margin-bottom: 10px; }
+.how-step p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+/* ---------- PROGRAMS ---------- */
+.programs {
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.program {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 40px 32px;
+  position: relative;
+  transition: all .4s ease;
+  display: flex; flex-direction: column;
+}
+.program:hover { border-color: var(--gold); transform: translateY(-4px); }
+.program.featured {
+  background: linear-gradient(180deg, #2e2218 0%, var(--bg-card) 100%);
+  border-color: var(--gold);
+}
+.program.featured::before {
+  content: 'Берут чаще всего';
+  position: absolute;
+  top: -12px; right: 28px;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-bright) 100%);
+  color: #1c1410;
+  font-size: 10px; font-weight: 700;
+  padding: 6px 14px;
+  letter-spacing: 0.15em;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+.program-name { font-size: 28px; margin-bottom: 8px; }
+.program-meta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.program-meta span { display: inline-flex; align-items: center; gap: 6px; }
+.program-meta span::before {
+  content: ''; width: 4px; height: 4px;
+  background: var(--gold); border-radius: 50%;
+}
+.program-desc { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 28px; flex: 1; }
+.program-price {
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px;
+}
+.program-price .lbl { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+.program-price .val {
+  font-family: 'Manrope', sans-serif;
+  font-size: 30px;
+  color: var(--gold);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.program-price .val small { font-size: 14px; color: var(--muted); font-family: 'Manrope', sans-serif; font-weight: 400; }
+.program-price .lbl-extra { font-size: 11px; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; opacity: 0.85; }
+.program .btn { width: 100%; justify-content: center; }
+
+.programs-note {
+  margin-top: 48px;
+  padding: 24px 32px;
+  background: rgba(217, 183, 121, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+.programs-note strong { color: var(--cream); font-weight: 500; }
+
+/* ---------- INCLUDED ---------- */
+.included {
+  background: var(--bg-deep);
+}
+.included-header { text-align: center; max-width: 760px; margin: 0 auto 64px; }
+.included-header .section-title { margin-bottom: 16px; }
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.inc-item {
+  padding: 28px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+  transition: all .3s ease;
+}
+.inc-item:hover { border-color: var(--gold); }
+.inc-icon { font-size: 28px; margin-bottom: 14px; }
+.inc-item .name { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
+.inc-item .sub { font-size: 12px; color: var(--muted); }
+
+/* ---------- ATMOSPHERE / GALLERY ---------- */
+.atmosphere-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 260px 260px;
+  gap: 16px;
+}
+.atmo-item {
+  border-radius: 8px;
+  overflow: hidden;
+  background-size: cover; background-position: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform .5s ease;
+}
+.atmo-item:hover { transform: scale(1.02); }
+.atmo-item::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(28,20,16,0.85) 100%);
+}
+.atmo-cap {
+  position: absolute; bottom: 20px; left: 24px; right: 24px;
+  z-index: 2;
+  color: var(--cream);
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+.atmo-item.large { grid-column: span 2; grid-row: span 2; }
+.atmo-item.large .atmo-cap { font-size: 24px; font-weight: 300; letter-spacing: -0.015em; }
+
+/* ---------- ADDITIONAL SERVICES ---------- */
+.addons {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.addon {
+  display: flex; gap: 28px;
+  padding: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: all .3s ease;
+  align-items: flex-start;
+}
+.addon:hover { border-color: var(--gold); }
+.addon-icon {
+  width: 64px; height: 64px;
+  flex-shrink: 0;
+  background: rgba(217, 183, 121, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+.addon-body { flex: 1; }
+.addon h4 { font-size: 24px; margin-bottom: 8px; }
+.addon-desc { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
+.addon-price { color: var(--gold); font-weight: 600; font-size: 14px; }
+.addon.feature { background: linear-gradient(135deg, #2e2218 0%, var(--bg-card) 100%); border-color: var(--gold); }
+.addon.feature .addon-icon { background: rgba(217, 183, 121, 0.18); }
+
+/* ---------- RULES ---------- */
+.rules {
+  background: var(--bg-deep);
+  padding: 80px 0;
+}
+.rules-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(217, 183, 121, 0.04) 0%, rgba(217, 183, 121, 0.08) 100%);
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  position: relative;
+}
+.rules-inner::before {
+  content: '🌿';
+  position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-deep);
+  padding: 0 16px;
+  font-size: 32px;
+}
+.rules-inner h2 { font-size: clamp(32px, 4vw, 44px); margin-bottom: 24px; }
+.rules-inner p { color: var(--muted); font-size: 17px; line-height: 1.8; max-width: 740px; margin: 0 auto 16px; }
+.rules-inner p strong { color: var(--cream); font-weight: 500; }
+
+/* ---------- REVIEWS ---------- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.review {
+  padding: 40px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  position: relative;
+}
+.review::before {
+  content: '"';
+  position: absolute; top: 8px; left: 24px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 100px;
+  color: var(--gold);
+  opacity: 0.15;
+  line-height: 1;
+}
+.review-stars { color: var(--gold); margin-bottom: 16px; font-size: 14px; }
+.review-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: var(--cream);
+  line-height: 1.7;
+}
+.review-author {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.review-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  color: #1c1410;
+  font-size: 16px;
+}
+.review-name { font-weight: 500; font-size: 15px; }
+.review-meta { font-size: 12px; color: var(--muted); }
+
+/* ---------- CTA BANNER ---------- */
+.cta-banner {
+  padding: 110px 0;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(28,20,16,0.85) 0%, rgba(28,20,16,0.95) 100%),
+    url('banya_content/01_photos/IMG_5197.JPG') center/cover fixed;
+  position: relative;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cta-banner h2 {
+  font-size: clamp(36px, 5.5vw, 60px);
+  margin-bottom: 24px;
+  max-width: 880px; margin-left: auto; margin-right: auto;
+}
+.cta-banner p {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+.cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- CONTACTS ---------- */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.contact-form {
+  background: var(--bg-card);
+  padding: 52px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.contact-form h3 { font-size: 36px; margin-bottom: 8px; }
+.contact-form > p { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
+.form-row { margin-bottom: 20px; }
+.form-row label {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.form-row input, .form-row textarea, .form-row select {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color .2s ease;
+}
+.form-row input:focus, .form-row textarea:focus, .form-row select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-row textarea { resize: vertical; min-height: 100px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-disclaimer { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
+
+.contact-info { padding: 16px 0; }
+.contact-info h3 { font-size: 36px; margin-bottom: 24px; }
+.contact-info > p { color: var(--muted); margin-bottom: 32px; }
+.info-block {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.info-block:last-of-type { border-bottom: none; }
+.info-icon {
+  width: 48px; height: 48px;
+  background: rgba(217, 183, 121, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.info-lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+.info-val { font-size: 17px; font-weight: 500; line-height: 1.4; }
+.info-val a:hover { color: var(--gold); }
+.socials { display: flex; gap: 12px; margin-top: 28px; }
+.socials a {
+  width: 44px; height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .3s ease;
+  font-weight: 600;
+  font-size: 12px;
+}
+.socials a:hover { background: var(--gold); color: #1c1410; border-color: var(--gold); }
+
+/* ---------- FOOTER ---------- */
+.footer {
+  padding: 60px 0 32px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer h4 { font-size: 12px; margin-bottom: 20px; color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase; font-family: 'Manrope', sans-serif; font-weight: 500; }
+.footer ul { list-style: none; }
+.footer li { padding: 6px 0; font-size: 14px; color: var(--muted); }
+.footer li a:hover { color: var(--gold); }
+.footer-about p { color: var(--muted); font-size: 14px; margin-top: 20px; max-width: 360px; line-height: 1.7; }
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; color: var(--muted);
+}
+
+/* ---------- FLOATING WA ---------- */
+.wa-float {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 60px; height: 60px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  z-index: 50;
+  transition: transform .3s ease;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+.wa-float:hover { transform: scale(1.1); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  50% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+}
+
+/* ---------- STEAM / WARM EFFECTS ---------- */
+
+/* Section-level warm ambient (drifting orbs of warm light) */
+.steam-section { overflow: hidden; }
+.steam-section::before,
+.steam-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+.steam-section::before {
+  bottom: -15%;
+  left: -10%;
+  width: 60%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(255, 145, 80, 0.16) 0%, rgba(255, 180, 110, 0.08) 35%, transparent 65%);
+  animation: warm-drift-a 35s ease-in-out infinite alternate;
+}
+.steam-section::after {
+  bottom: -8%;
+  right: -10%;
+  width: 55%;
+  height: 70%;
+  background: radial-gradient(circle, rgba(255, 180, 110, 0.13) 0%, rgba(255, 200, 140, 0.06) 40%, transparent 65%);
+  animation: warm-drift-b 45s ease-in-out infinite alternate;
+}
+.steam-section > .container { position: relative; z-index: 2; }
+
+@keyframes warm-drift-a {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  100% { transform: translate(100px, -60px) scale(1.15); opacity: 1; }
+}
+@keyframes warm-drift-b {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.45; }
+  100% { transform: translate(-80px, -80px) scale(1.1); opacity: 0.9; }
+}
+
+/* Card under-glow — steam rising from beneath */
+.tradition, .addon { position: relative; }
+
+.program::after,
+.tradition::after,
+.addon::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 6%;
+  right: 6%;
+  height: 55px;
+  margin-top: -8px;
+  background: radial-gradient(ellipse at center top,
+    rgba(255, 150, 85, 0.55) 0%,
+    rgba(255, 175, 110, 0.22) 35%,
+    transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity .6s ease, transform .6s ease, filter .6s ease;
+  z-index: 0;
+  animation: glow-pulse 4s ease-in-out infinite alternate;
+}
+.program:hover::after,
+.tradition:hover::after,
+.addon:hover::after {
+  opacity: 1;
+  transform: translateY(6px) scale(1.06);
+  filter: blur(22px);
+}
+.program.featured::after {
+  background: radial-gradient(ellipse at center top,
+    rgba(255, 165, 95, 0.7) 0%,
+    rgba(255, 190, 130, 0.28) 35%,
+    transparent 70%);
+  opacity: 0.85;
+  height: 70px;
+}
+
+@keyframes glow-pulse {
+  0%   { opacity: 0.5; filter: blur(18px); }
+  100% { opacity: 0.75; filter: blur(22px); }
+}
+
+/* ---------- ANIMATIONS ---------- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .whyus-grid { grid-template-columns: 1fr; gap: 48px; }
+  .traditions-grid { grid-template-columns: 1fr; }
+  .programs-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .included-grid { grid-template-columns: repeat(3, 1fr); }
+  .how-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .how-steps::before { display: none; }
+  .atmosphere-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 220px 220px 220px; }
+  .atmo-item.large { grid-column: span 2; grid-row: span 1; }
+  .addons-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  section { padding: 80px 0; }
+  .container { padding: 0 20px; }
+  .hero h1 .h1-line { white-space: normal; }
+  .steam-section::before, .steam-section::after {
+    filter: blur(60px);
+    width: 80%; height: 60%;
+    animation: none;
+    opacity: 0.6;
+  }
+  .program::after, .tradition::after, .addon::after {
+    filter: blur(14px);
+    height: 35px;
+    animation: none;
+  }
+  .nav-links, .nav-phone { display: none; }
+  .burger { display: flex; }
+  .hero-meta { flex-wrap: wrap; gap: 24px; }
+  .programs-grid, .reviews-grid, .included-grid { grid-template-columns: 1fr; }
+  .included-grid { grid-template-columns: repeat(2, 1fr); }
+  .how-steps { grid-template-columns: 1fr; }
+  .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
+  .contact-form { padding: 32px 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .form-grid { grid-template-columns: 1fr; }
+  .addon { flex-direction: column; gap: 20px; }
+  .wa-float { width: 54px; height: 54px; bottom: 20px; right: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark"></div>
+      <div>
+        <div class="logo-text">DISHANDI</div>
+        <span class="logo-tag">Human Life Evolution Lab</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#whyus">Почему Dishandi</a>
+      <a href="#how">Как проходит</a>
+      <a href="#programs">Программы</a>
+      <a href="#included">Что входит</a>
+      <a href="#atmosphere">Фото</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+77070320577" class="nav-phone"><span>☎</span> +7 707 032 0577</a>
+      <a href="#contacts" class="btn btn-primary">Забронировать</a>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <span class="eyebrow">Dishandi SPA · Алматы</span>
+    <h1><span class="h1-line">5-часовая программа парения</span><span class="h1-line">с видом на <span class="accent">Алматы</span>.</span></h1>
+
+    <div class="hero-divider"></div>
+
+    <p class="hero-sub">Банщик работает лично по 25 минут с каждым гостем. Две бани под одной крышей — русская и казахская юрта, холодная купель, горячий чан, обед на компанию. Без алкоголя, без чатов — здесь нечего листать.</p>
+    <div class="hero-actions">
+      <a href="#programs" class="btn btn-primary">Посмотреть программы и цены</a>
+      <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="btn btn-wa">Спросить в WhatsApp</a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="num">25 <small>мин</small></div>
+        <div class="lbl">парят лично<br>каждого гостя</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="num">2</div>
+        <div class="lbl">бани под<br>одной крышей</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="num">6</div>
+        <div class="lbl">веников включено<br>в программу</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="num">4–6 <small>ч</small></div>
+        <div class="lbl">длительность<br>программы</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Листайте вниз</div>
+</section>
+
+<!-- ========== WHY US ========== -->
+<section id="whyus" class="whyus">
+  <div class="container">
+    <div class="whyus-grid">
+      <div class="whyus-text fade-up">
+        <span class="eyebrow">Почему Dishandi</span>
+        <h2>В Алматы можно «снять баню» за 20 000 ₸. Мы делаем по-другому.</h2>
+        <p>В обычной бане вы платите за <strong>пустую парилку</strong> на 3 часа. Что с ней делать — ваша проблема. Веники купите сами, парьтесь сами, еду принесите сами.</p>
+        <p>У нас всё иначе. <strong>Банщик работает с вами лично 25 минут</strong> — веники, контрастные обливания, тишина. Между заходами вы переходите из русской бани в казахскую юрту, а не сидите в одной парилке. Обед — плов, шорпа или форель — готовят на месте.</p>
+        <p>Это дороже, чем «снять баньку». Но это и не то же самое. К нам приходят на день рождения, в годовщину, после марафона, после развода, перед важной сделкой. Реже — «просто попариться».</p>
+      </div>
+      <div class="whyus-image fade-up">
+        <div class="whyus-image-cap">
+          <div class="title">«Парят, а не сдают парилку в аренду»</div>
+          <div class="sub">Отзыв в Instagram</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TWO TRADITIONS ========== -->
+<section id="traditions" class="steam-section">
+  <div class="container">
+    <span class="eyebrow fade-up">Две бани</span>
+    <h2 class="section-title fade-up">Не одна парилка на весь вечер</h2>
+    <p class="section-subtitle fade-up">Между заходами вы переходите из бани в баню. Это даёт смену атмосферы и не утомляет тело однотипным жаром.</p>
+
+    <div class="traditions-grid">
+      <div class="tradition fade-up">
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');"></div>
+        <div class="tradition-body">
+          <div class="tradition-num">Баня № 1</div>
+          <h3>Русская баня</h3>
+          <p>Сруб, дровяная печь, мягкий пар 70–80°C. Под потолком висят свежие веники — дуб, пихта, можжевельник. Холодная купель в трёх шагах от двери — нырнули и обратно.</p>
+          <div class="tradition-tags">
+            <span>Дровяная печь</span>
+            <span>6 веников</span>
+            <span>Купель рядом</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tradition fade-up">
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5197.JPG');"></div>
+        <div class="tradition-body">
+          <div class="tradition-num">Баня № 2</div>
+          <h3>Казахская юрта</h3>
+          <p>Настоящая юрта с куполом. Сенная кровать на травах, узбекская расписная посуда, фонари, ковры. Горячий чан под открытым небом — ложитесь и смотрите на Алматы сверху.</p>
+          <div class="tradition-tags">
+            <span>Горячий чан</span>
+            <span>Сенная кровать</span>
+            <span>Вид на горы</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT GOES ========== -->
+<section id="how" class="how">
+  <div class="container">
+    <div class="how-header">
+      <span class="eyebrow fade-up">Как проходит</span>
+      <h2 class="section-title fade-up">5 этапов программы за 4–6 часов</h2>
+      <p class="section-subtitle fade-up">Вам не нужно «знать, как правильно париться». Банщик ведёт вас по программе. Вы расслабляетесь и доверяете процессу.</p>
+    </div>
+
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="how-step-num">1</div>
+        <div class="how-step-time">15 мин</div>
+        <h4>Приходите</h4>
+        <p>Встречаем, чай, переодеваетесь в халаты. Узнаём, что нужно — расслабиться, восстановиться, отпраздновать.</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">2</div>
+        <div class="how-step-time">40 мин</div>
+        <h4>Прогрев</h4>
+        <p>Два общих парения с травами. Тело привыкает к жару, поры открываются. Между заходами — купель, чай.</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">3</div>
+        <div class="how-step-time">25 мин на гостя</div>
+        <h4>Личное парение</h4>
+        <p>Банщик работает только с вами: дубовый веник, пихтовый, можжевеловый. Холодная купель. Догрев. Без слов.</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">4</div>
+        <div class="how-step-time">60 мин</div>
+        <h4>Юрта и чан</h4>
+        <p>Переходите в казахскую юрту. Горячий чан под небом, сенная кровать, чайная церемония, мёд, фрукты.</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">5</div>
+        <div class="how-step-time">60 мин</div>
+        <h4>Обед</h4>
+        <p>На выбор: плов с греческим салатом, шорпа с салатом, форель с овощами гриль. Готовят на месте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAMS ========== -->
+<section id="programs" class="programs steam-section">
+  <div class="container">
+    <span class="eyebrow fade-up">Программы и цены</span>
+    <h2 class="section-title fade-up">6 форматов под любую компанию</h2>
+    <p class="section-subtitle fade-up">Цены указаны за всю компанию, а не с человека (кроме «Бани номадов»). Это полная стоимость — без доплат за веники, полотенца и еду.</p>
+
+    <div class="programs-grid">
+
+      <div class="program fade-up">
+        <h3 class="program-name">Пар для пары</h3>
+        <div class="program-meta">
+          <span>2 человека</span><span>до 4 часов</span>
+        </div>
+        <p class="program-desc">Камерный формат для двоих. Личное парение каждому, ёлово-грейпфрутовый скраб, горячий чан под звёздами, восточная чайная церемония. Хорошо идёт на годовщину и в подарок «извини, я виноват».</p>
+        <div class="program-price">
+          <div><div class="lbl">за двоих</div></div>
+          <div class="val">200 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
+      </div>
+
+      <div class="program featured fade-up">
+        <h3 class="program-name">BARDO</h3>
+        <div class="program-meta">
+          <span>до 6 человек</span><span>до 6 часов</span>
+        </div>
+        <p class="program-desc">Главная программа. Личное парение по 25 минут каждому, обе бани, холодная купель Bardo floating, горячий чан, обед из 3 блюд на выбор. Берут на дни рождения и в подарок партнёрам.</p>
+        <div class="program-price">
+          <div>
+            <div class="lbl">за компанию</div>
+            <div class="lbl-extra">+ 50 000 ₸ за&nbsp;доп. гостя</div>
+          </div>
+          <div class="val">350 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary">Забронировать</a>
+      </div>
+
+      <div class="program fade-up">
+        <h3 class="program-name">BARDO light</h3>
+        <div class="program-meta">
+          <span>до 6 человек</span><span>4 часа</span>
+        </div>
+        <p class="program-desc">Облегчённый вариант без личных парений. Только русская баня, 3 групповых пара, горячий чан, сенная кровать, чай, мёд, снеки. Хороший вариант, если бюджет ограничен — но атмосфера Dishandi нужна.</p>
+        <div class="program-price">
+          <div>
+            <div class="lbl">за компанию</div>
+            <div class="lbl-extra">+ 30 000 ₸ за&nbsp;доп. гостя</div>
+          </div>
+          <div class="val">250 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
+      </div>
+
+      <div class="program fade-up">
+        <h3 class="program-name">Баня номадов</h3>
+        <div class="program-meta">
+          <span>9–15 человек</span><span>до 6 часов</span>
+        </div>
+        <p class="program-desc">Групповой формат для большой компании. Обе бани, 3 общих парения, чан, тапчан, обед на компанию. Корпоративы без алкоголя, дни рождения, спортивные команды после соревнований.</p>
+        <div class="program-price">
+          <div><div class="lbl">с человека</div></div>
+          <div class="val">45 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
+      </div>
+
+      <div class="program fade-up">
+        <h3 class="program-name">Утро</h3>
+        <div class="program-meta">
+          <span>до 5 человек</span><span>7:00–11:00</span>
+        </div>
+        <p class="program-desc">Утренний слот. Пустой комплекс, рассвет, мягкий пар. Без обеда — но с чаем, мёдом, орехами, фруктами. Хорошо после перелёта или перед важным днём.</p>
+        <div class="program-price">
+          <div><div class="lbl">от · 2–3 чел</div></div>
+          <div class="val">130 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
+      </div>
+
+      <div class="program fade-up">
+        <h3 class="program-name">Нейропарение</h3>
+        <div class="program-meta">
+          <span>до 3 человек</span><span>до 4 часов</span>
+        </div>
+        <p class="program-desc">Доплата к основной программе. Психолог-банщик работает с конкретным запросом во время парения: развод, выгорание, страх публичных выступлений, навязчивые мысли. Это терапия в банном формате, не эзотерика.</p>
+        <div class="program-price">
+          <div><div class="lbl">доплата к&nbsp;программе</div></div>
+          <div class="val">+100 000 <small>₸</small></div>
+        </div>
+        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
+      </div>
+
+    </div>
+
+    <div class="programs-note fade-up">
+      <strong>Большая компания от 16 человек?</strong> Напишите в WhatsApp — соберём программу под вас, рассчитаем индивидуально.
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHAT'S INCLUDED ========== -->
+<section id="included" class="included steam-section">
+  <div class="container">
+    <div class="included-header fade-up">
+      <span class="eyebrow">Что входит в цену</span>
+      <h2 class="section-title">12 позиций — и ни одной доплаты сверху</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">Не нужно покупать веники, брать с собой полотенца, заказывать еду отдельно. Всё уже посчитано в цене программы.</p>
+    </div>
+
+    <div class="included-grid">
+      <div class="inc-item fade-up"><div class="inc-icon">🏛️</div><div class="name">Две бани</div><div class="sub">Русская + казахская юрта</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🔥</div><div class="name">Горячий чан</div><div class="sub">На дровах, под небом</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">❄️</div><div class="name">Холодная купель</div><div class="sub">Bardo floating</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🌿</div><div class="name">6 веников</div><div class="sub">Дуб, пихта, можжевельник</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🛏️</div><div class="name">Сенная кровать</div><div class="sub">На травах</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🍵</div><div class="name">Чай</div><div class="sub">Чёрный, зелёный, травяной</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🍯</div><div class="name">Мёд и снеки</div><div class="sub">Орехи, сухофрукты</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🍲</div><div class="name">Обед</div><div class="sub">Плов, шорпа или форель</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">💧</div><div class="name">Вода</div><div class="sub">Питьевая и минеральная</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🧖</div><div class="name">Халаты, тапочки</div><div class="sub">Полотенца, шапочки</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🏔️</div><div class="name">Терраса</div><div class="sub">Панорама Алматы</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🌾</div><div class="name">Травы для пара</div><div class="sub">Сезонный сбор</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ATMOSPHERE ========== -->
+<section id="atmosphere">
+  <div class="container">
+    <span class="eyebrow fade-up">Фото</span>
+    <h2 class="section-title fade-up">Как у нас внутри</h2>
+    <p class="section-subtitle fade-up">Снято без фотошопа. Свет, посуда, ковры — всё, что увидите, когда приедете.</p>
+
+    <div class="atmosphere-grid">
+      <div class="atmo-item large fade-up" style="background-image: url('banya_content/01_photos/IMG_5193.JPG');">
+        <div class="atmo-cap">Купель Bardo floating</div>
+      </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5196.JPG');">
+        <div class="atmo-cap">Чайная церемония</div>
+      </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');">
+        <div class="atmo-cap">Веники в&nbsp;русской бане</div>
+      </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5199.JPG');">
+        <div class="atmo-cap">Зона отдыха в юрте</div>
+      </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5195.JPG');">
+        <div class="atmo-cap">Текстиль</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ADDITIONAL SERVICES ========== -->
+<section id="addons" class="addons steam-section">
+  <div class="container">
+    <span class="eyebrow fade-up">Дополнительно</span>
+    <h2 class="section-title fade-up">Если хочется усилить эффект</h2>
+    <p class="section-subtitle fade-up">Заказываются заранее при бронировании. Все мастера — наши, не приходящие со стороны.</p>
+
+    <div class="addons-grid">
+      <div class="addon feature fade-up">
+        <div class="addon-icon">🧠</div>
+        <div class="addon-body">
+          <h4>Нейропарение</h4>
+          <p class="addon-desc">Психолог-банщик работает с конкретным запросом во время парения: отпустить развод, проработать выгорание, снять страх публичных выступлений, успокоить навязчивые мысли. Это не эзотерика, а терапия в банном формате — гости приходят с конкретными запросами и решают их.</p>
+          <div class="addon-price">+100 000 ₸ к программе · до 3 человек</div>
+        </div>
+      </div>
+
+      <div class="addon fade-up">
+        <div class="addon-icon">💆</div>
+        <div class="addon-body">
+          <h4>Массаж</h4>
+          <p class="addon-desc">Расслабляющий или спортивный — после парения, когда тело уже размято. Опытные мастера, авторские техники.</p>
+          <div class="addon-price">Уточняйте цену при бронировании</div>
+        </div>
+      </div>
+
+      <div class="addon fade-up">
+        <div class="addon-icon">🌿</div>
+        <div class="addon-body">
+          <h4>Скрабирование</h4>
+          <p class="addon-desc">Ёлово-грейпфрутовый, медовый или кофейный скраб между паровыми заходами. Раскрывает поры, кожа после процедуры — гладкая, как у ребёнка.</p>
+          <div class="addon-price">Уточняйте цену при бронировании</div>
+        </div>
+      </div>
+
+      <div class="addon fade-up">
+        <div class="addon-icon">🪮</div>
+        <div class="addon-body">
+          <h4>Помывка</h4>
+          <p class="addon-desc">Финальный этап ритуала. Банщик моет вас с маслами Dishandi, как в восточной традиции. После — выходите как новенький.</p>
+          <div class="addon-price">Уточняйте цену при бронировании</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RULES / NO ALCOHOL ========== -->
+<section class="rules">
+  <div class="container">
+    <div class="rules-inner fade-up">
+      <span class="eyebrow">Правило про алкоголь</span>
+      <h2>У нас не наливают. И приносить нельзя.</h2>
+      <p>Не из принципа. Просто <strong>после третьей рюмки настоящий жар уже не чувствуется</strong>, а пятая рюмка после холодной купели — это скорая. Мы не хотим этим заниматься.</p>
+      <p>У нас 4–6 часов программы: банщик, две бани, чан, юрта, обед, чай, мёд. <strong>Скучать некогда</strong>. Гости, которые пробовали — больше про алкоголь в бане не спрашивают.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REVIEWS ========== -->
+<section id="reviews">
+  <div class="container">
+    <span class="eyebrow fade-up">Отзывы</span>
+    <h2 class="section-title fade-up">Что пишут гости</h2>
+    <p class="section-subtitle fade-up">Это плейсхолдеры — заменим на ваши реальные отзывы из Instagram, 2ГИС и Google.</p>
+
+    <div class="reviews-grid">
+      <div class="review fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Брал на день рождения — 6 человек, программа BARDO. Думал, дорого. После — пожалел, что не пришёл раньше. Это не баня, это полноценный 6-часовой опыт. Все ушли с улыбками и обещаниями вернуться.</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div>
+            <div class="review-name">Алишер Н.</div>
+            <div class="review-meta">2ГИС · 3 недели назад</div>
+          </div>
+        </div>
+      </div>
+      <div class="review fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Парил Бахытжан — это не банщик, это шаман. 25 минут со мной — как заново родилась. Скрабирование, чан, чай в юрте, плов — всё на месте, всё включено. Спасибо команде Dishandi.</p>
+        <div class="review-author">
+          <div class="review-avatar">К</div>
+          <div>
+            <div class="review-name">Карина М.</div>
+            <div class="review-meta">Instagram · месяц назад</div>
+          </div>
+        </div>
+      </div>
+      <div class="review fade-up">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Шла на нейропарение со скепсисом — звучит как эзотерика. Оказалось — серьёзная работа. Проработали страх перед защитой диссертации. Защитилась без паники. Стоит каждой потраченной тенге.</p>
+        <div class="review-author">
+          <div class="review-avatar">Д</div>
+          <div>
+            <div class="review-name">Дина С.</div>
+            <div class="review-meta">Google · 2 месяца назад</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA BANNER ========== -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="eyebrow">Не уверены, какую программу выбрать?</span>
+    <h2>Напишите в WhatsApp — за 5 минут подберём вариант</h2>
+    <p>Расскажете, сколько человек, повод и бюджет. Предложим формат, проверим свободные даты, держим слот 24 часа без предоплаты.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20узнать%20про%20программы" class="btn btn-wa">Написать в WhatsApp</a>
+      <a href="tel:+77070320577" class="btn btn-primary">Позвонить: +7 707 032 0577</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACTS ========== -->
+<section id="contacts">
+  <div class="container">
+    <div class="contacts-grid">
+      <form class="contact-form fade-up" onsubmit="event.preventDefault(); alert('Заявка отправлена. Перезвоним в течение 10 минут.');">
+        <h3>Бронирование</h3>
+        <p>Заполните форму — за 10 минут уточним свободные слоты и подтвердим в WhatsApp</p>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Имя</label>
+            <input type="text" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="form-row">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 ___ ___ __ __" required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label>Программа</label>
+            <select>
+              <option>BARDO — 350 000 ₸ (хит)</option>
+              <option>Пар для пары — 200 000 ₸</option>
+              <option>BARDO light — 250 000 ₸</option>
+              <option>Баня номадов — 45 000 ₸/чел</option>
+              <option>Утро — от 130 000 ₸</option>
+              <option>+ Нейропарение</option>
+              <option>Не знаю, помогите выбрать</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>Дата</label>
+            <input type="date">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Сколько человек и повод</label>
+          <textarea placeholder="Например: 4 человека, день рождения жены, нужен скраб и массаж"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Отправить заявку</button>
+        <p class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Мы не передаём контакты третьим лицам и не звоним с рекламой.</p>
+      </form>
+
+      <div class="contact-info fade-up">
+        <span class="eyebrow">Контакты</span>
+        <h3>Как с нами связаться</h3>
+        <p>Быстрее всего — WhatsApp. Отвечаем в течение 10 минут в часы работы, утром — после 8:00.</p>
+
+        <div class="info-block">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-lbl">Локация</div>
+            <div class="info-val">г. Алматы<br>Точный адрес — после бронирования</div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">☎</div>
+          <div>
+            <div class="info-lbl">Телефон</div>
+            <div class="info-val"><a href="tel:+77070320577">+7 707 032 0577</a></div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">💬</div>
+          <div>
+            <div class="info-lbl">WhatsApp</div>
+            <div class="info-val"><a href="https://wa.me/77070320577">Написать в WhatsApp →</a></div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-lbl">Часы работы</div>
+            <div class="info-val">Ежедневно 7:00 — 23:00<br>Бронирование 24/7</div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a href="#" title="Instagram">IG</a>
+          <a href="#" title="TikTok">TT</a>
+          <a href="#" title="YouTube">YT</a>
+          <a href="#" title="Telegram">TG</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <div>
+            <div class="logo-text">DISHANDI</div>
+            <span class="logo-tag">Human Life Evolution Lab</span>
+          </div>
+        </div>
+        <p>Банный комплекс в Алматы. Программа на 4–6 часов с личным парильщиком, две бани под одной крышей, без алкоголя.</p>
+      </div>
+      <div>
+        <h4>Навигация</h4>
+        <ul>
+          <li><a href="#whyus">Почему Dishandi</a></li>
+          <li><a href="#how">Как проходит</a></li>
+          <li><a href="#programs">Программы</a></li>
+          <li><a href="#atmosphere">Фото</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Программы</h4>
+        <ul>
+          <li><a href="#programs">Пар для пары</a></li>
+          <li><a href="#programs">BARDO</a></li>
+          <li><a href="#programs">BARDO light</a></li>
+          <li><a href="#programs">Баня номадов</a></li>
+          <li><a href="#programs">Нейропарение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li>+7 707 032 0577</li>
+          <li>WhatsApp 24/7</li>
+          <li>Алматы</li>
+          <li>7:00 — 23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Dishandi SPA · Human Life Evolution Laboratory</div>
+      <div><a href="#">Политика конфиденциальности</a> · <a href="#">Договор-оферта</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="wa-float" title="Написать в WhatsApp">💬</a>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
