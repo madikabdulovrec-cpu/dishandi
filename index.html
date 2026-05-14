@@ -5,6 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dishandi SPA — баня с личным парильщиком в Алматы</title>
 <meta name="description" content="Программа на 4–6 часов: банщик парит лично 25 минут каждого, две бани, холодная купель, горячий чан, обед на компанию. Без алкоголя. Бронирование: +7 707 032 0577" />
+<link rel="canonical" href="https://madikabdulovrec-cpu.github.io/dishandi/" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<!-- Open Graph: превью при отправке ссылки в WhatsApp / Telegram / соцсети -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Dishandi SPA — баня с личным парильщиком в Алматы" />
+<meta property="og:description" content="Программа на 4–6 часов: банщик парит лично 25 минут каждого, две бани, купель, чан, обед. Без алкоголя." />
+<meta property="og:image" content="https://madikabdulovrec-cpu.github.io/dishandi/banya_content/01_photos/IMG_5658.PNG" />
+<meta property="og:url" content="https://madikabdulovrec-cpu.github.io/dishandi/" />
+<meta property="og:locale" content="ru_RU" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Schema.org: помогает в локальном поиске. ВАЖНО: впишите точный адрес в address ниже -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Dishandi SPA",
+  "description": "Банный комплекс в Алматы: программа на 4–6 часов с личным парильщиком, русская баня и баня-юрта, горячий чан, холодная купель, обед. Без алкоголя.",
+  "url": "https://madikabdulovrec-cpu.github.io/dishandi/",
+  "telephone": "+77070320577",
+  "image": "https://madikabdulovrec-cpu.github.io/dishandi/banya_content/01_photos/IMG_5658.PNG",
+  "priceRange": "₸₸₸",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ВПИШИТЕ_АДРЕС",
+    "addressLocality": "Алматы",
+    "addressCountry": "KZ"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "23:00"
+  }
+}
+</script>
+
+<!-- Yandex.Metrica -->
+<script type="text/javascript">
+  window.YM_COUNTER_ID = 0; /* <-- ЗАМЕНИТЕ 0 на номер счётчика Яндекс.Метрики (создаётся за 2 мин на metrika.yandex.kz) */
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+  if (window.YM_COUNTER_ID) {
+    ym(window.YM_COUNTER_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  }
+</script>
+<!-- /Yandex.Metrica -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -159,8 +210,8 @@ section { padding: 130px 0; position: relative; }
 .nav-cta { display: flex; align-items: center; gap: 16px; }
 .nav-phone { font-weight: 600; font-size: 14px; white-space: nowrap; }
 .nav-phone span { color: var(--gold); }
-.burger { display: none; flex-direction: column; gap: 5px; }
-.burger span { width: 24px; height: 2px; background: var(--cream); }
+.burger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.burger span { width: 24px; height: 2px; background: var(--cream); transition: transform .3s ease, opacity .3s ease; }
 
 /* ---------- HERO ---------- */
 .hero {
@@ -657,13 +708,45 @@ section { padding: 130px 0; position: relative; }
 .review-name { font-weight: 500; font-size: 15px; }
 .review-meta { font-size: 12px; color: var(--muted); }
 
+/* ---------- FAQ ---------- */
+.faq-list { max-width: 840px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 26px 52px 26px 0;
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--cream);
+  cursor: pointer;
+  position: relative;
+  transition: color .25s ease;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-q::after {
+  content: '+';
+  position: absolute;
+  right: 4px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  font-weight: 200;
+  color: var(--gold);
+  transition: transform .35s ease;
+}
+.faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+.faq-a p { padding: 0 52px 28px 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.faq-item.open .faq-a { max-height: 360px; }
+
 /* ---------- CTA BANNER ---------- */
 .cta-banner {
   padding: 110px 0;
   text-align: center;
   background:
     linear-gradient(135deg, rgba(28,20,16,0.85) 0%, rgba(28,20,16,0.95) 100%),
-    url('banya_content/01_photos/IMG_5657.JPG') center/cover fixed;
+    url('banya_content/01_photos/IMG_5657.JPG') center/cover;
   position: relative;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -723,6 +806,16 @@ section { padding: 130px 0; position: relative; }
 .form-row textarea { resize: vertical; min-height: 100px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-disclaimer { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
+.form-success {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  border-radius: 6px;
+  color: #cfeede;
+  font-size: 14px;
+  line-height: 1.6;
+}
 
 .contact-info { padding: 16px 0; }
 .contact-photo {
@@ -933,8 +1026,24 @@ section { padding: 130px 0; position: relative; }
     height: 35px;
     animation: none;
   }
-  .nav-links, .nav-phone { display: none; }
+  .nav-phone { display: none; }
   .burger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 20px 16px;
+  }
+  .nav.menu-open .nav-links { display: flex; }
+  .nav-links a { padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--border); }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav.menu-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .burger span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .hero-meta { flex-wrap: wrap; gap: 24px; }
   .traditions-grid { grid-template-columns: 1fr; }
   .programs-grid, .reviews-grid, .included-grid { grid-template-columns: 1fr; }
@@ -967,7 +1076,7 @@ section { padding: 130px 0; position: relative; }
       <a href="#traditions">Пространства</a>
       <a href="#how">Как проходит</a>
       <a href="#programs">Программы</a>
-      <a href="#atmosphere">Фото</a>
+      <a href="#faq">Вопросы</a>
       <a href="#contacts">Контакты</a>
     </div>
     <div class="nav-cta">
@@ -1150,7 +1259,7 @@ section { padding: 130px 0; position: relative; }
 <section id="programs" class="programs steam-section">
   <div class="container">
     <span class="eyebrow fade-up">Программы и цены</span>
-    <h2 class="section-title fade-up">6 форматов под любую компанию</h2>
+    <h2 class="section-title fade-up">5 форматов под любую компанию</h2>
     <p class="section-subtitle fade-up">Цены указаны за всю компанию, а не с человека (кроме «Бани номадов»). Это полная стоимость — без доплат за веники, полотенца и еду.</p>
 
     <div class="programs-grid">
@@ -1162,7 +1271,10 @@ section { padding: 130px 0; position: relative; }
         </div>
         <p class="program-desc">Камерный формат для двоих. Личное парение каждому, ёлово-грейпфрутовый скраб, горячий чан под звёздами, восточная чайная церемония. Хорошо идёт на годовщину и в подарок «извини, я виноват».</p>
         <div class="program-price">
-          <div><div class="lbl">за двоих</div></div>
+          <div>
+            <div class="lbl">за двоих</div>
+            <div class="lbl-extra">по 100 000 ₸ с человека</div>
+          </div>
           <div class="val">200 000 <small>₸</small></div>
         </div>
         <a href="#contacts" class="btn btn-ghost">Забронировать</a>
@@ -1176,8 +1288,8 @@ section { padding: 130px 0; position: relative; }
         <p class="program-desc">Главная программа. Личное парение по 25 минут каждому, обе бани, холодная купель Bardo floating, горячий чан, обед из 3 блюд на выбор. Берут на дни рождения и в подарок партнёрам.</p>
         <div class="program-price">
           <div>
-            <div class="lbl">за компанию</div>
-            <div class="lbl-extra">+ 50 000 ₸ за&nbsp;доп. гостя</div>
+            <div class="lbl">за компанию до 6 чел</div>
+            <div class="lbl-extra">≈ 58 000 ₸ с человека · доп. +50 000 ₸</div>
           </div>
           <div class="val">350 000 <small>₸</small></div>
         </div>
@@ -1192,8 +1304,8 @@ section { padding: 130px 0; position: relative; }
         <p class="program-desc">Облегчённый вариант без личных парений. Только русская баня, 3 групповых пара, горячий чан, сенная кровать, чай, мёд, снеки. Хороший вариант, если бюджет ограничен — но атмосфера Dishandi нужна.</p>
         <div class="program-price">
           <div>
-            <div class="lbl">за компанию</div>
-            <div class="lbl-extra">+ 30 000 ₸ за&nbsp;доп. гостя</div>
+            <div class="lbl">за компанию до 6 чел</div>
+            <div class="lbl-extra">≈ 42 000 ₸ с человека · доп. +30 000 ₸</div>
           </div>
           <div class="val">250 000 <small>₸</small></div>
         </div>
@@ -1220,21 +1332,11 @@ section { padding: 130px 0; position: relative; }
         </div>
         <p class="program-desc">Утренний слот. Пустой комплекс, рассвет, мягкий пар. Без обеда — но с чаем, мёдом, орехами, фруктами. Хорошо после перелёта или перед важным днём.</p>
         <div class="program-price">
-          <div><div class="lbl">от · 2–3 чел</div></div>
+          <div>
+            <div class="lbl">за компанию · 2–3 чел</div>
+            <div class="lbl-extra">4–5 чел — по 40 000 ₸ с человека</div>
+          </div>
           <div class="val">130 000 <small>₸</small></div>
-        </div>
-        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
-      </div>
-
-      <div class="program fade-up">
-        <h3 class="program-name">Нейропарение</h3>
-        <div class="program-meta">
-          <span>до 3 человек</span><span>до 4 часов</span>
-        </div>
-        <p class="program-desc">Доплата к основной программе. Психолог-банщик работает с конкретным запросом во время парения: развод, выгорание, страх публичных выступлений, навязчивые мысли. Это терапия в банном формате, не эзотерика.</p>
-        <div class="program-price">
-          <div><div class="lbl">доплата к&nbsp;программе</div></div>
-          <div class="val">+100 000 <small>₸</small></div>
         </div>
         <a href="#contacts" class="btn btn-ghost">Забронировать</a>
       </div>
@@ -1404,6 +1506,47 @@ section { padding: 130px 0; position: relative; }
   </div>
 </section>
 
+<!-- ========== FAQ ========== -->
+<section id="faq" class="steam-section">
+  <div class="container">
+    <span class="eyebrow fade-up">Вопросы</span>
+    <h2 class="section-title fade-up">Частые вопросы</h2>
+    <p class="section-subtitle fade-up">Не нашли ответ — напишите в WhatsApp, ответим за пару минут.</p>
+
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q" type="button">Что нужно брать с собой?</button>
+        <div class="faq-a"><p>Ничего обязательного. Халаты, тапочки, полотенца, шапочки и банные принадлежности уже включены в программу. Если в купели и чане вам комфортнее в купальнике — возьмите его, остальное есть у нас.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Это правда без алкоголя? Чем заняться 4–6 часов?</button>
+        <div class="faq-a"><p>Да, алкоголь мы не наливаем и не разрешаем приносить. Скучать не придётся: личное парение с банщиком, две бани, горячий чан, холодная купель, чайная церемония, отдых в юрте и обед. Время проходит незаметно.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Можно ли со своей едой или тортом?</button>
+        <div class="faq-a"><p>Обед входит в программу — приносить еду не нужно. Если планируете что-то особенное к поводу (например, торт на день рождения) — предупредите при бронировании, поможем всё организовать.</p></div>
+      </div>
+      <!-- КЛИЕНТУ: когда дадите точный адрес — впишите его сюда и в блок «Контакты», уточните про парковку -->
+      <div class="faq-item">
+        <button class="faq-q" type="button">Где находится Dishandi и как добраться?</button>
+        <div class="faq-a"><p>Мы в Алматы, в стороне от городского шума — с террасы открывается панорама города. Точный адрес и схему проезда отправляем при подтверждении брони, тогда же подскажем про парковку и удобный маршрут.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Можно ли прийти с детьми?</button>
+        <div class="faq-a"><p>Формат рассчитан на спокойный взрослый отдых. Если планируете визит с детьми — напишите нам заранее, подскажем, какой вариант и время подойдут.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Что если мы опоздаем?</button>
+        <div class="faq-a"><p>Программа идёт по времени, поэтому опоздание сократит её. Если понимаете, что задерживаетесь — позвоните или напишите заранее, постараемся подстроиться.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Как забронировать? Нужна ли предоплата?</button>
+        <div class="faq-a"><p>Заполните форму на сайте или напишите в WhatsApp. Свяжемся в течение 10 минут, подберём программу и проверим свободные даты. Выбранный слот держим 24 часа без предоплаты.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== CTA BANNER ========== -->
 <section class="cta-banner">
   <div class="container">
@@ -1421,47 +1564,48 @@ section { padding: 130px 0; position: relative; }
 <section id="contacts">
   <div class="container">
     <div class="contacts-grid">
-      <form class="contact-form fade-up" onsubmit="event.preventDefault(); alert('Заявка отправлена. Перезвоним в течение 10 минут.');">
+      <form class="contact-form fade-up" id="bookingForm">
         <h3>Бронирование</h3>
-        <p>Заполните форму — за 10 минут уточним свободные слоты и подтвердим в WhatsApp</p>
+        <p>Заполните форму — откроем WhatsApp с готовой заявкой. Ответим в течение 10 минут.</p>
 
         <div class="form-grid">
           <div class="form-row">
             <label>Имя</label>
-            <input type="text" placeholder="Как к вам обращаться" required>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required>
           </div>
           <div class="form-row">
             <label>Телефон</label>
-            <input type="tel" placeholder="+7 ___ ___ __ __" required>
+            <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required>
           </div>
         </div>
 
         <div class="form-grid">
           <div class="form-row">
             <label>Программа</label>
-            <select>
+            <select name="program">
               <option>BARDO — 350 000 ₸ (хит)</option>
               <option>Пар для пары — 200 000 ₸</option>
               <option>BARDO light — 250 000 ₸</option>
               <option>Баня номадов — 45 000 ₸/чел</option>
               <option>Утро — от 130 000 ₸</option>
-              <option>+ Нейропарение</option>
+              <option>+ Нейропарение (доплата)</option>
               <option>Не знаю, помогите выбрать</option>
             </select>
           </div>
           <div class="form-row">
             <label>Дата</label>
-            <input type="date">
+            <input type="date" name="date">
           </div>
         </div>
 
         <div class="form-row">
           <label>Сколько человек и повод</label>
-          <textarea placeholder="Например: 4 человека, день рождения жены, нужен скраб и массаж"></textarea>
+          <textarea name="comment" placeholder="Например: 4 человека, день рождения жены, нужен скраб и массаж"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Отправить заявку</button>
-        <p class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Мы не передаём контакты третьим лицам и не звоним с рекламой.</p>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Отправить заявку в WhatsApp</button>
+        <div class="form-success" hidden>✓ Открываем WhatsApp с вашей заявкой — отправьте сообщение, и мы перезвоним в течение 10 минут.</div>
+        <p class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с <a href="policy.html" style="color: var(--gold);">обработкой персональных данных</a>. Мы не передаём контакты третьим лицам и не звоним с рекламой.</p>
       </form>
 
       <div class="contact-info fade-up">
@@ -1558,7 +1702,7 @@ section { padding: 130px 0; position: relative; }
     </div>
     <div class="footer-bottom">
       <div>© 2026 Dishandi SPA · Human Life Evolution Laboratory</div>
-      <div><a href="#">Политика конфиденциальности</a> · <a href="#">Договор-оферта</a></div>
+      <div><a href="policy.html">Политика конфиденциальности</a></div>
     </div>
   </div>
 </footer>
@@ -1567,11 +1711,22 @@ section { padding: 130px 0; position: relative; }
 <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="wa-float" title="Написать в WhatsApp">💬</a>
 
 <script>
+// ===== Nav scroll state =====
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
+// ===== Mobile burger menu =====
+const burger = document.querySelector('.burger');
+if (burger) {
+  burger.addEventListener('click', () => nav.classList.toggle('menu-open'));
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => nav.classList.remove('menu-open'));
+  });
+}
+
+// ===== Fade-up on scroll =====
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1581,6 +1736,50 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// ===== FAQ accordion =====
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+
+// ===== Yandex.Metrica goal helper =====
+function ymGoal(goal) {
+  if (typeof ym === 'function') { try { ym(window.YM_COUNTER_ID, 'reachGoal', goal); } catch (e) {} }
+}
+
+// ===== Track WhatsApp + phone clicks =====
+document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => {
+  a.addEventListener('click', () => ymGoal('whatsapp_click'));
+});
+document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+  a.addEventListener('click', () => ymGoal('phone_click'));
+});
+
+// ===== Booking form -> WhatsApp =====
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) {
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = (n) => { const el = bookingForm.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
+    const lines = [
+      'Здравствуйте! Заявка с сайта Dishandi SPA:',
+      '',
+      'Имя: ' + val('name'),
+      'Телефон: ' + val('phone'),
+      'Программа: ' + val('program')
+    ];
+    if (val('date')) lines.push('Дата: ' + val('date'));
+    if (val('comment')) lines.push('Детали: ' + val('comment'));
+
+    ymGoal('form_submit');
+    window.open('https://wa.me/77070320577?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+
+    const ok = bookingForm.querySelector('.form-success');
+    if (ok) ok.hidden = false;
+    const btn = bookingForm.querySelector('button[type="submit"]');
+    if (btn) btn.textContent = 'Заявка отправлена ✓';
+  });
+}
 </script>
 
 </body>
