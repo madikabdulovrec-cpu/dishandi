@@ -192,12 +192,13 @@ section { padding: 130px 0; position: relative; }
 }
 .logo-text { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 18px; letter-spacing: 0.22em; }
 .logo-tag { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); display: block; margin-top: 3px; font-weight: 400; }
-.nav-links { display: flex; gap: 36px; }
+.nav-links { display: flex; gap: 26px; }
 .nav-links a {
   font-size: 13px; color: var(--cream);
   transition: color .2s ease;
   position: relative;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 .nav-links a::after {
   content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
@@ -1001,6 +1002,24 @@ section { padding: 130px 0; position: relative; }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
+  .nav-phone { display: none; }
+  .burger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 20px 16px;
+  }
+  .nav.menu-open .nav-links { display: flex; }
+  .nav-links a { padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--border); white-space: normal; }
+  .nav-links a:last-child { border-bottom: none; }
+  .nav.menu-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .burger span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .whyus-grid { grid-template-columns: 1fr; gap: 48px; }
   .programs-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .included-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1026,24 +1045,6 @@ section { padding: 130px 0; position: relative; }
     height: 35px;
     animation: none;
   }
-  .nav-phone { display: none; }
-  .burger { display: flex; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: var(--bg-deep);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 20px 16px;
-  }
-  .nav.menu-open .nav-links { display: flex; }
-  .nav-links a { padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--border); }
-  .nav-links a:last-child { border-bottom: none; }
-  .nav.menu-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav.menu-open .burger span:nth-child(2) { opacity: 0; }
-  .nav.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .hero-meta { flex-wrap: wrap; gap: 24px; }
   .traditions-grid { grid-template-columns: 1fr; }
   .programs-grid, .reviews-grid, .included-grid { grid-template-columns: 1fr; }
@@ -1072,7 +1073,7 @@ section { padding: 130px 0; position: relative; }
       </div>
     </a>
     <div class="nav-links">
-      <a href="#whyus">Почему Dishandi</a>
+      <a href="#whyus">О нас</a>
       <a href="#traditions">Пространства</a>
       <a href="#how">Как проходит</a>
       <a href="#programs">Программы</a>
