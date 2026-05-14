@@ -173,8 +173,8 @@ section { padding: 130px 0; position: relative; }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(180deg, rgba(28,20,16,0.6) 0%, rgba(28,20,16,0.92) 100%),
-    url('banya_content/01_photos/IMG_5193.JPG') center/cover;
+    linear-gradient(100deg, rgba(28,20,16,0.94) 0%, rgba(28,20,16,0.66) 55%, rgba(28,20,16,0.82) 100%),
+    url('banya_content/01_photos/IMG_5657.JPG') center/cover;
   z-index: 0;
 }
 .hero-bg::after {
@@ -295,7 +295,7 @@ section { padding: 130px 0; position: relative; }
   border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 4/5;
-  background: url('banya_content/01_photos/IMG_5198.JPG') center/cover;
+  background: url('banya_content/01_photos/IMG_5648.JPG') center/cover;
 }
 .whyus-image::after {
   content: ''; position: absolute; inset: 0;
@@ -663,7 +663,7 @@ section { padding: 130px 0; position: relative; }
   text-align: center;
   background:
     linear-gradient(135deg, rgba(28,20,16,0.85) 0%, rgba(28,20,16,0.95) 100%),
-    url('banya_content/01_photos/IMG_5197.JPG') center/cover fixed;
+    url('banya_content/01_photos/IMG_5193.JPG') center/cover fixed;
   position: relative;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -725,6 +725,14 @@ section { padding: 130px 0; position: relative; }
 .form-disclaimer { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
 
 .contact-info { padding: 16px 0; }
+.contact-photo {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin-bottom: 36px;
+  border: 1px solid var(--border);
+}
 .contact-info h3 { font-size: 36px; margin-bottom: 24px; }
 .contact-info > p { color: var(--muted); margin-bottom: 32px; }
 .info-block {
@@ -901,7 +909,6 @@ section { padding: 130px 0; position: relative; }
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
   .whyus-grid { grid-template-columns: 1fr; gap: 48px; }
-  .traditions-grid { grid-template-columns: 1fr; }
   .programs-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .included-grid { grid-template-columns: repeat(3, 1fr); }
   .how-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
@@ -929,6 +936,7 @@ section { padding: 130px 0; position: relative; }
   .nav-links, .nav-phone { display: none; }
   .burger { display: flex; }
   .hero-meta { flex-wrap: wrap; gap: 24px; }
+  .traditions-grid { grid-template-columns: 1fr; }
   .programs-grid, .reviews-grid, .included-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: repeat(2, 1fr); }
   .how-steps { grid-template-columns: 1fr; }
@@ -956,9 +964,9 @@ section { padding: 130px 0; position: relative; }
     </a>
     <div class="nav-links">
       <a href="#whyus">Почему Dishandi</a>
+      <a href="#traditions">Пространства</a>
       <a href="#how">Как проходит</a>
       <a href="#programs">Программы</a>
-      <a href="#included">Что входит</a>
       <a href="#atmosphere">Фото</a>
       <a href="#contacts">Контакты</a>
     </div>
@@ -979,7 +987,7 @@ section { padding: 130px 0; position: relative; }
 
     <div class="hero-divider"></div>
 
-    <p class="hero-sub">Банщик работает лично по 25 минут с каждым гостем. Две бани под одной крышей — русская и казахская юрта, холодная купель, горячий чан, обед на компанию. Без алкоголя, без чатов — здесь нечего листать.</p>
+    <p class="hero-sub">Банщик работает лично по 25 минут с каждым гостем. Четыре пространства — русская баня, баня-юрта, горячий чан под небом и холодная купель. Обед на компанию. Без алкоголя, без чатов — здесь нечего листать.</p>
     <div class="hero-actions">
       <a href="#programs" class="btn btn-primary">Посмотреть программы и цены</a>
       <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="btn btn-wa">Спросить в WhatsApp</a>
@@ -1014,51 +1022,79 @@ section { padding: 130px 0; position: relative; }
         <span class="eyebrow">Почему Dishandi</span>
         <h2>В Алматы можно «снять баню» за 20 000 ₸. Мы делаем по-другому.</h2>
         <p>В обычной бане вы платите за <strong>пустую парилку</strong> на 3 часа. Что с ней делать — ваша проблема. Веники купите сами, парьтесь сами, еду принесите сами.</p>
-        <p>У нас всё иначе. <strong>Банщик работает с вами лично 25 минут</strong> — веники, контрастные обливания, тишина. Между заходами вы переходите из русской бани в казахскую юрту, а не сидите в одной парилке. Обед — плов, шорпа или форель — готовят на месте.</p>
-        <p>Это дороже, чем «снять баньку». Но это и не то же самое. К нам приходят на день рождения, в годовщину, после марафона, после развода, перед важной сделкой. Реже — «просто попариться».</p>
+        <p>У нас всё иначе. <strong>Банщик работает с вами лично 25 минут</strong> — веники, контрастные обливания, тишина. Между заходами вы переходите из русской бани в баню-юрту, из горячего чана в холодную купель. Обед — плов, шорпа или форель — готовят на месте.</p>
+        <p>Мы передаём другую культуру бани — <strong>бережную, осознанную, без шумных застолий и алкоголя</strong>. К нам приходят на день рождения, в годовщину, после марафона, перед важной сделкой. Чтобы замедлиться и выйти обновлённым — телом и состоянием.</p>
       </div>
       <div class="whyus-image fade-up">
         <div class="whyus-image-cap">
-          <div class="title">«Парят, а не сдают парилку в аренду»</div>
-          <div class="sub">Отзыв в Instagram</div>
+          <div class="title">«Место, где человек замедляется и&nbsp;возвращается к&nbsp;себе»</div>
+          <div class="sub">Из нашего манифеста</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== TWO TRADITIONS ========== -->
+<!-- ========== OUR SPACES ========== -->
 <section id="traditions" class="steam-section">
   <div class="container">
-    <span class="eyebrow fade-up">Две бани</span>
-    <h2 class="section-title fade-up">Не одна парилка на весь вечер</h2>
-    <p class="section-subtitle fade-up">Между заходами вы переходите из бани в баню. Это даёт смену атмосферы и не утомляет тело однотипным жаром.</p>
+    <span class="eyebrow fade-up">Наши пространства</span>
+    <h2 class="section-title fade-up">Четыре пространства, а не одна парилка</h2>
+    <p class="section-subtitle fade-up">Между заходами вы меняете не только температуру — вы меняете обстановку. Русская баня, баня-юрта, горячий чан под небом, холодная купель. У каждого пространства — своя роль в программе.</p>
 
     <div class="traditions-grid">
       <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');"></div>
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5651.JPG');"></div>
         <div class="tradition-body">
-          <div class="tradition-num">Баня № 1</div>
+          <div class="tradition-num">Парная</div>
           <h3>Русская баня</h3>
-          <p>Сруб, дровяная печь, мягкий пар 70–80°C. Под потолком висят свежие веники — дуб, пихта, можжевельник. Холодная купель в трёх шагах от двери — нырнули и обратно.</p>
+          <p>Традиционная парная с мягким влажным паром. Для классического банного отдыха и парения с вениками — дуб, пихта, можжевельник.</p>
           <div class="tradition-tags">
+            <span>До 8 человек</span>
             <span>Дровяная печь</span>
-            <span>6 веников</span>
-            <span>Купель рядом</span>
+            <span>Влажный пар</span>
           </div>
         </div>
       </div>
 
       <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5197.JPG');"></div>
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5654.JPG');"></div>
         <div class="tradition-body">
-          <div class="tradition-num">Баня № 2</div>
-          <h3>Казахская юрта</h3>
-          <p>Настоящая юрта с куполом. Сенная кровать на травах, узбекская расписная посуда, фонари, ковры. Горячий чан под открытым небом — ложитесь и смотрите на Алматы сверху.</p>
+          <div class="tradition-num">Парная</div>
+          <h3>Баня-юрта</h3>
+          <p>Атмосферная баня в этническом стиле. Для больших компаний, праздников и глубокого расслабления в необычной обстановке.</p>
           <div class="tradition-tags">
-            <span>Горячий чан</span>
-            <span>Сенная кровать</span>
-            <span>Вид на горы</span>
+            <span>До 20 человек</span>
+            <span>Этнический стиль</span>
+            <span>Для компаний</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tradition fade-up">
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5647.JPG');"></div>
+        <div class="tradition-body">
+          <div class="tradition-num">Под открытым небом</div>
+          <h3>Горячий чан</h3>
+          <p>Чан с горячей водой на свежем воздухе — с панорамой Алматы. Для вечернего отдыха и контрастных процедур после парилки.</p>
+          <div class="tradition-tags">
+            <span>Вид на город</span>
+            <span>Свежий воздух</span>
+            <span>Контраст</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tradition fade-up">
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5650.JPG');"></div>
+        <div class="tradition-body">
+          <div class="tradition-num">Контраст</div>
+          <h3>Холодная купель</h3>
+          <p>Освежающее погружение сразу после парения — для восстановления, тонуса и ярких ощущений. Та самая точка перезагрузки.</p>
+          <div class="tradition-tags">
+            <span>После парилки</span>
+            <span>Тонус</span>
+            <span>Восстановление</span>
           </div>
         </div>
       </div>
@@ -1098,7 +1134,7 @@ section { padding: 130px 0; position: relative; }
         <div class="how-step-num">4</div>
         <div class="how-step-time">60 мин</div>
         <h4>Юрта и чан</h4>
-        <p>Переходите в казахскую юрту. Горячий чан под небом, сенная кровать, чайная церемония, мёд, фрукты.</p>
+        <p>Переходите в баню-юрту. Горячий чан под небом, сенная кровать, чайная церемония, мёд, фрукты.</p>
       </div>
       <div class="how-step fade-up">
         <div class="how-step-num">5</div>
@@ -1221,7 +1257,7 @@ section { padding: 130px 0; position: relative; }
     </div>
 
     <div class="included-grid">
-      <div class="inc-item fade-up"><div class="inc-icon">🏛️</div><div class="name">Две бани</div><div class="sub">Русская + казахская юрта</div></div>
+      <div class="inc-item fade-up"><div class="inc-icon">🏛️</div><div class="name">Две бани</div><div class="sub">Русская + баня-юрта</div></div>
       <div class="inc-item fade-up"><div class="inc-icon">🔥</div><div class="name">Горячий чан</div><div class="sub">На дровах, под небом</div></div>
       <div class="inc-item fade-up"><div class="inc-icon">❄️</div><div class="name">Холодная купель</div><div class="sub">Bardo floating</div></div>
       <div class="inc-item fade-up"><div class="inc-icon">🌿</div><div class="name">6 веников</div><div class="sub">Дуб, пихта, можжевельник</div></div>
@@ -1245,8 +1281,8 @@ section { padding: 130px 0; position: relative; }
     <p class="section-subtitle fade-up">Снято без фотошопа. Свет, посуда, ковры — всё, что увидите, когда приедете.</p>
 
     <div class="atmosphere-grid">
-      <div class="atmo-item large fade-up" style="background-image: url('banya_content/01_photos/IMG_5193.JPG');">
-        <div class="atmo-cap">Купель Bardo floating</div>
+      <div class="atmo-item large fade-up" style="background-image: url('banya_content/01_photos/IMG_5653.JPG');">
+        <div class="atmo-cap">Комната отдыха в&nbsp;юрте</div>
       </div>
       <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5196.JPG');">
         <div class="atmo-cap">Чайная церемония</div>
@@ -1254,11 +1290,11 @@ section { padding: 130px 0; position: relative; }
       <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');">
         <div class="atmo-cap">Веники в&nbsp;русской бане</div>
       </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5199.JPG');">
-        <div class="atmo-cap">Зона отдыха в юрте</div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5649.JPG');">
+        <div class="atmo-cap">Дрова и&nbsp;травы</div>
       </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5195.JPG');">
-        <div class="atmo-cap">Текстиль</div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5646.JPG');">
+        <div class="atmo-cap">Тёплый свет и&nbsp;детали</div>
       </div>
     </div>
   </div>
@@ -1429,6 +1465,7 @@ section { padding: 130px 0; position: relative; }
       </form>
 
       <div class="contact-info fade-up">
+        <div class="contact-photo" style="background-image: url('banya_content/01_photos/IMG_5652.JPG');"></div>
         <span class="eyebrow">Контакты</span>
         <h3>Как с нами связаться</h3>
         <p>Быстрее всего — WhatsApp. Отвечаем в течение 10 минут в часы работы, утром — после 8:00.</p>
