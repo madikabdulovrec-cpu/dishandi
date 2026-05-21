@@ -30,14 +30,15 @@
   "priceRange": "₸₸₸",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "ВПИШИТЕ_АДРЕС",
+    "streetAddress": "СТ Коктобе, 18, Медеуский район",
+    "postalCode": "050020",
     "addressLocality": "Алматы",
     "addressCountry": "KZ"
   },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "07:00",
+    "opens": "10:00",
     "closes": "23:00"
   }
 }
@@ -976,6 +977,32 @@ section { padding: 130px 0; position: relative; }
   transform: translateY(0);
 }
 
+/* ---------- MAP & REVIEWS CTA ---------- */
+.reviews-cta { text-align: center; margin-top: 44px; }
+.map-block {
+  margin-top: 56px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.map-frame {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  display: block;
+  filter: grayscale(0.3) brightness(0.95);
+}
+.map-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 28px;
+  background: var(--bg-card);
+  flex-wrap: wrap;
+}
+.map-addr { font-size: 15px; color: var(--cream); }
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 1024px) {
   .nav-phone { display: none; }
@@ -1075,6 +1102,13 @@ section { padding: 130px 0; position: relative; }
   .faq-q { font-size: 16px; padding-right: 40px; }
   .faq-a p { padding-right: 0; }
   .faq-item.open .faq-a { max-height: 900px; }
+
+  /* Map */
+  .map-block { margin-top: 40px; }
+  .map-frame { height: 280px; }
+  .map-bar { padding: 16px 18px; }
+  .map-bar .btn { width: 100%; justify-content: center; }
+  .map-addr { font-size: 14px; }
 
   .wa-float { width: 54px; height: 54px; bottom: 20px; right: 20px; }
 }
@@ -1491,42 +1525,46 @@ section { padding: 130px 0; position: relative; }
   <div class="container">
     <span class="eyebrow fade-up">Отзывы</span>
     <h2 class="section-title fade-up">Что пишут гости</h2>
-    <p class="section-subtitle fade-up">Это плейсхолдеры — заменим на ваши реальные отзывы из Instagram, 2ГИС и Google.</p>
+    <p class="section-subtitle fade-up">Рейтинг <strong class="accent">4.7</strong> на 2ГИС по 31 отзыву. Вот несколько из них.</p>
 
     <div class="reviews-grid">
       <div class="review fade-up">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Брал на день рождения — 6 человек, программа BARDO. Думал, дорого. После — пожалел, что не пришёл раньше. Это не баня, это полноценный 6-часовой опыт. Все ушли с улыбками и обещаниями вернуться.</p>
+        <p class="review-text">В этом месте всё просто на высшем уровне: топовый сервис, идеальная чистота, комфортный процесс парения.</p>
         <div class="review-author">
-          <div class="review-avatar">А</div>
+          <div class="review-avatar">Б</div>
           <div>
-            <div class="review-name">Алишер Н.</div>
-            <div class="review-meta">2ГИС · 3 недели назад</div>
+            <div class="review-name">Бауыржан Д.</div>
+            <div class="review-meta">2ГИС</div>
           </div>
         </div>
       </div>
       <div class="review fade-up">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Парил Бахытжан — это не пармастер, это шаман. 25 минут со мной — как заново родилась. Скрабирование, чан, чай в юрте, плов — всё на месте, всё включено. Спасибо команде Dishandi.</p>
+        <p class="review-text">Дмитрию и его команде — огромное спасибо. Отлетел в хорошем смысле слова. Рекомендую!</p>
         <div class="review-author">
-          <div class="review-avatar">К</div>
+          <div class="review-avatar">М</div>
           <div>
-            <div class="review-name">Карина М.</div>
-            <div class="review-meta">Instagram · месяц назад</div>
+            <div class="review-name">Макс Авраменко</div>
+            <div class="review-meta">2ГИС</div>
           </div>
         </div>
       </div>
       <div class="review fade-up">
         <div class="review-stars">★★★★★</div>
-        <p class="review-text">Шла со скепсисом — баня и баня. Но персональное парение по методике Дишанди оказалось отдельным опытом. А вид на ночной Алматы из горячего чана — это вообще что-то. Уехала будто заново родилась.</p>
+        <p class="review-text">Лучшая баня, в которой я была, — здесь реально расслабляешься. А вид просто шикарный!</p>
         <div class="review-author">
-          <div class="review-avatar">Д</div>
+          <div class="review-avatar">Г</div>
           <div>
-            <div class="review-name">Дина С.</div>
-            <div class="review-meta">Google · 2 месяца назад</div>
+            <div class="review-name">Гинчик К.</div>
+            <div class="review-meta">2ГИС</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="reviews-cta fade-up">
+      <a href="https://2gis.kz/almaty/firm/70000001098724181/tab/reviews" target="_blank" rel="noopener" class="btn btn-ghost">Читать все 31 отзыв на 2ГИС →</a>
     </div>
   </div>
 </section>
@@ -1553,7 +1591,7 @@ section { padding: 130px 0; position: relative; }
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">Где находится Dishandi и как добраться?</button>
-        <div class="faq-a"><p>Мы в Алматы, в стороне от городского шума — с террасы открывается панорама города. Точный адрес и схему проезда отправляем при подтверждении брони, тогда же подскажем про парковку и удобный маршрут.</p></div>
+        <div class="faq-a"><p>Мы на горе Кок-Тобе — СТ Коктобе, 18, Медеуский район Алматы. С территории открывается панорама города. Карту и кнопку «Маршрут в 2ГИС» найдёте в блоке «Контакты» внизу страницы.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false">Можно ли прийти с детьми?</button>
@@ -1634,13 +1672,13 @@ section { padding: 130px 0; position: relative; }
         <div class="contact-photo" style="background-image: url('banya_content/01_photos/IMG_5652.JPG');"></div>
         <span class="eyebrow">Контакты</span>
         <h3>Как с нами связаться</h3>
-        <p>Быстрее всего — WhatsApp. Отвечаем в течение 10 минут в часы работы, утром — после 8:00.</p>
+        <p>Быстрее всего — WhatsApp. Отвечаем в течение 10 минут в рабочее время.</p>
 
         <div class="info-block">
           <div class="info-icon">📍</div>
           <div>
-            <div class="info-lbl">Локация</div>
-            <div class="info-val">Кок-Тобе, Алматы<br>Точный адрес — после бронирования</div>
+            <div class="info-lbl">Адрес</div>
+            <div class="info-val">СТ Коктобе, 18 · гора Кок-Тобе<br>Медеуский район, Алматы</div>
           </div>
         </div>
 
@@ -1664,7 +1702,7 @@ section { padding: 130px 0; position: relative; }
           <div class="info-icon">🕐</div>
           <div>
             <div class="info-lbl">Часы работы</div>
-            <div class="info-val">Ежедневно 7:00 — 23:00<br>Бронирование 24/7</div>
+            <div class="info-val">Ежедневно 10:00 — 23:00<br>По предварительной записи</div>
           </div>
         </div>
 
@@ -1674,6 +1712,14 @@ section { padding: 130px 0; position: relative; }
           <a href="#" title="YouTube">YT</a>
           <a href="#" title="Telegram">TG</a>
         </div>
+      </div>
+    </div>
+
+    <div class="map-block fade-up">
+      <iframe class="map-frame" src="https://maps.google.com/maps?q=43.22321,76.980198&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Карта — Dishandi SPA на Кок-Тобе"></iframe>
+      <div class="map-bar">
+        <div class="map-addr">📍 СТ Коктобе, 18 · гора Кок-Тобе, Медеуский район, Алматы</div>
+        <a href="https://2gis.kz/almaty/firm/70000001098724181" target="_blank" rel="noopener" class="btn btn-primary">Маршрут в 2ГИС →</a>
       </div>
     </div>
   </div>
@@ -1715,9 +1761,9 @@ section { padding: 130px 0; position: relative; }
         <h4>Контакты</h4>
         <ul>
           <li>+7 707 032 0577</li>
-          <li>WhatsApp 24/7</li>
-          <li>Алматы</li>
-          <li>7:00 — 23:00</li>
+          <li>WhatsApp</li>
+          <li>СТ Коктобе, 18 · Алматы</li>
+          <li>Ежедневно 10:00 — 23:00</li>
         </ul>
       </div>
     </div>
