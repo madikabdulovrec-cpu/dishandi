@@ -109,7 +109,7 @@ h1, h2, h3, h4 {
 }
 .eyebrow::before { content: '— '; opacity: 0.6; }
 .section-title {
-  font-size: clamp(34px, 4.8vw, 56px);
+  font-size: clamp(26px, 5vw, 56px);
   margin-bottom: 20px;
   font-weight: 300;
   letter-spacing: -0.02em;
@@ -235,7 +235,7 @@ section { padding: 130px 0; position: relative; }
   text-align: left;
 }
 .hero h1 {
-  font-size: clamp(32px, 4.6vw, 60px);
+  font-size: clamp(28px, 4.6vw, 60px);
   line-height: 1.1;
   margin: 28px 0 0;
   font-weight: 200;
@@ -322,7 +322,7 @@ section { padding: 130px 0; position: relative; }
   align-items: center;
 }
 .whyus-text h2 {
-  font-size: clamp(36px, 4.8vw, 52px);
+  font-size: clamp(26px, 4.8vw, 52px);
   margin-bottom: 28px;
   font-weight: 300;
   letter-spacing: -0.02em;
@@ -651,7 +651,7 @@ section { padding: 130px 0; position: relative; }
   padding: 0 16px;
   font-size: 32px;
 }
-.rules-inner h2 { font-size: clamp(32px, 4vw, 44px); margin-bottom: 24px; }
+.rules-inner h2 { font-size: clamp(24px, 4.5vw, 44px); margin-bottom: 24px; }
 .rules-inner p { color: var(--muted); font-size: 17px; line-height: 1.8; max-width: 740px; margin: 0 auto 16px; }
 .rules-inner p strong { color: var(--cream); font-weight: 500; }
 
@@ -746,7 +746,7 @@ section { padding: 130px 0; position: relative; }
   border-bottom: 1px solid var(--border);
 }
 .cta-banner h2 {
-  font-size: clamp(36px, 5.5vw, 60px);
+  font-size: clamp(27px, 5.5vw, 60px);
   margin-bottom: 24px;
   max-width: 880px; margin-left: auto; margin-right: auto;
 }
@@ -790,7 +790,7 @@ section { padding: 130px 0; position: relative; }
   color: var(--cream);
   border-radius: 4px;
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
   transition: border-color .2s ease;
 }
 .form-row input:focus, .form-row textarea:focus, .form-row select:focus {
@@ -1024,9 +1024,28 @@ section { padding: 130px 0; position: relative; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  section { padding: 80px 0; }
+  section { padding: 68px 0; }
   .container { padding: 0 20px; }
+  .section-subtitle { margin-bottom: 40px; }
+  .rules { padding: 64px 0; }
+
+  /* Hero */
   .hero h1 .h1-line { white-space: normal; }
+  .hero-content { padding-top: 88px; }
+  .hero h1 { margin-top: 20px; }
+  .hero-divider { margin: 32px 0; }
+  .hero-sub { margin-bottom: 36px; font-size: 16px; }
+  .hero-actions { flex-direction: column; margin-bottom: 52px; gap: 12px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+    padding-top: 32px;
+  }
+  .hero-meta-item .num { font-size: 38px; }
+
+  /* Steam — reduce render cost */
   .steam-section::before, .steam-section::after {
     filter: blur(60px);
     width: 80%; height: 60%;
@@ -1038,18 +1057,61 @@ section { padding: 130px 0; position: relative; }
     height: 35px;
     animation: none;
   }
-  .hero-meta { flex-wrap: wrap; gap: 24px; }
+
+  /* Grids */
   .traditions-grid { grid-template-columns: 1fr; }
-  .programs-grid, .reviews-grid, .included-grid { grid-template-columns: 1fr; }
+  .programs-grid, .reviews-grid { grid-template-columns: 1fr; }
   .included-grid { grid-template-columns: repeat(2, 1fr); }
-  .how-steps { grid-template-columns: 1fr; }
+  .included-header { margin-bottom: 44px; }
+  .how-steps { grid-template-columns: 1fr; gap: 32px; }
+  .how-header { margin-bottom: 48px; }
   .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
-  .contact-form { padding: 32px 24px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .form-grid { grid-template-columns: 1fr; }
-  .addon { flex-direction: column; gap: 20px; }
+
+  /* Card paddings & headings */
+  .program { padding: 30px 22px; }
+  .program-name { font-size: 24px; }
+  .tradition-body { padding: 26px 22px; }
+  .tradition-body h3 { font-size: 26px; }
+  .tradition-img { height: 240px; }
+  .review { padding: 30px 24px; }
+  .addon { flex-direction: column; gap: 20px; padding: 28px 24px; }
+  .rules-inner { padding: 44px 24px; }
+  .programs-note { padding: 20px 22px; margin-top: 32px; }
+  .contact-form { padding: 32px 22px; }
+  .contact-form h3, .contact-info h3 { font-size: 28px; }
+
+  /* CTA */
+  .cta-banner { padding: 72px 0; }
+  .cta-actions { flex-direction: column; gap: 12px; }
+  .cta-actions .btn { width: 100%; justify-content: center; }
+
+  /* FAQ */
+  .faq-q { font-size: 16px; padding-right: 40px; }
+  .faq-a p { padding-right: 0; }
+  .faq-item.open .faq-a { max-height: 900px; }
+
   .wa-float { width: 54px; height: 54px; bottom: 20px; right: 20px; }
+}
+@media (max-width: 480px) {
+  section { padding: 56px 0; }
+  .container { padding: 0 16px; }
+  .rules { padding: 52px 0; }
+  .hero-content { padding-top: 78px; }
+  .hero-meta { gap: 24px 14px; }
+  .hero-meta-item .num { font-size: 33px; }
+  .program { padding: 26px 18px; }
+  .tradition-body { padding: 22px 18px; }
+  .tradition-img { height: 210px; }
+  .review { padding: 26px 20px; }
+  .addon { padding: 24px 20px; }
+  .rules-inner { padding: 36px 20px; }
+  .contact-form { padding: 26px 18px; }
+  .inc-item { padding: 20px 12px; }
+  .cta-banner { padding: 58px 0; }
+  .atmosphere-grid { grid-template-rows: repeat(3, 168px); gap: 12px; }
 }
 </style>
 </head>
