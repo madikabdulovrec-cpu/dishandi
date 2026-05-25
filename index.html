@@ -179,12 +179,13 @@ section { padding: 130px 0; position: relative; }
   letter-spacing: 0.06em;
 }
 .logo-mark {
-  width: 46px; height: 46px;
+  height: 60px;
+  width: auto;
   object-fit: contain;
   display: block;
   flex-shrink: 0;
-  mix-blend-mode: lighten;
 }
+.footer .logo-mark { height: 88px; }
 .logo-text { font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 18px; letter-spacing: 0.22em; }
 .logo-tag { font-size: 9px; letter-spacing: 0.3em; color: var(--gold); display: block; margin-top: 3px; font-weight: 400; }
 .nav-links { display: flex; gap: 26px; }
@@ -1139,12 +1140,8 @@ section { padding: 130px 0; position: relative; }
 <!-- ========== NAV ========== -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#" class="logo">
-      <img class="logo-mark" src="banya_content/02_logo/logo-original.jpg" alt="Dishandi SPA" />
-      <div>
-        <div class="logo-text">DISHANDI</div>
-        <span class="logo-tag">Human Life Evolution Lab</span>
-      </div>
+    <a href="#" class="logo" aria-label="Dishandi SPA — на главную">
+      <img class="logo-mark" src="banya_content/02_logo/logo-full.png" alt="Dishandi SPA — Human Life Evolution Laboratory" />
     </a>
     <div class="nav-links">
       <a href="#whyus">О нас</a>
@@ -1733,11 +1730,7 @@ section { padding: 130px 0; position: relative; }
     <div class="footer-grid">
       <div class="footer-about">
         <div class="logo">
-          <img class="logo-mark" src="banya_content/02_logo/logo-original.jpg" alt="Dishandi SPA" />
-          <div>
-            <div class="logo-text">DISHANDI</div>
-            <span class="logo-tag">Human Life Evolution Lab</span>
-          </div>
+          <img class="logo-mark" src="banya_content/02_logo/logo-full.png" alt="Dishandi SPA — Human Life Evolution Laboratory" />
         </div>
         <p>Банный комплекс на Кок-Тобе, Алматы. Персональные парения по методике BARDO, русская и сакская бани, без алкоголя.</p>
       </div>
