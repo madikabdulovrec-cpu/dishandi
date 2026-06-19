@@ -3,52 +3,6 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109444047', 'ym');
-    ym(109444047, 'init', {ssr:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/109444047" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-<!-- Google tag (gtag.js) — Google Ads conversion tracking AW-18192480568 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18192480568"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18192480568');
-</script>
-<!-- /Google tag -->
-
-<!-- Dishandi: триггеры целей Метрики (phone_click / whatsapp_click / instagram_click / form_submit) -->
-<script>
-(function(){
-  var CID = 109444047;
-  function fire(name){ if (window.ym) ym(CID, 'reachGoal', name); }
-  document.addEventListener('click', function(e){
-    var el = e.target.closest && e.target.closest('a,button,[onclick]');
-    if (!el) return;
-    var href = (el.getAttribute && el.getAttribute('href') || '').toLowerCase();
-    var oc   = (el.getAttribute && el.getAttribute('onclick') || '').toLowerCase();
-    var combo = href + ' ' + oc;
-    if (/(?:^|[^a-z])tel:/.test(href))                                       fire('phone_click');
-    else if (combo.indexOf('wa.me') > -1 || combo.indexOf('whatsapp') > -1)  fire('whatsapp_click');
-    else if (combo.indexOf('instagram.com/') > -1)                           fire('instagram_click');
-    else if (combo.indexOf('t.me/') > -1 || combo.indexOf('telegram') > -1)  fire('whatsapp_click');
-  }, true);
-  document.addEventListener('submit', function(e){
-    if (e.target && e.target.tagName === 'FORM') fire('form_submit');
-  }, true);
-})();
-</script>
-
 <title>Dishandi SPA — баня на Кок-Тобе с панорамой Алматы</title>
 <meta name="description" content="Персональные парения по методике BARDO на высоте 1100 м над Алматы. Русская и сакская бани, горячий чан, холодная купель. Весь комплекс — под вашу компанию. Без алкоголя. +7 707 032 0577" />
 <link rel="canonical" href="https://madikabdulovrec-cpu.github.io/dishandi/" />
@@ -568,6 +522,74 @@ section { padding: 130px 0; position: relative; }
   font-size: 14px;
 }
 .programs-note strong { color: var(--cream); font-weight: 500; }
+
+/* ---------- CALCULATOR ---------- */
+.calc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 48px;
+}
+.calc-step { margin-bottom: 40px; }
+.calc-step-label {
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 20px;
+}
+.calc-tabs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+.calc-tab {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 20px 16px; text-align: left; cursor: pointer; transition: all .3s;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.calc-tab:hover { border-color: var(--gold-dim); }
+.calc-tab.active { background: rgba(217,183,121,0.08); border-color: var(--gold); }
+.ct-name { font-size: 17px; font-weight: 300; color: var(--cream); font-family: 'Manrope', sans-serif; }
+.ct-meta { font-size: 11px; color: var(--muted); }
+.ct-price { font-size: 13px; color: var(--gold); font-weight: 500; margin-top: 4px; }
+.calc-stepper { display: flex; align-items: center; gap: 20px; }
+.calc-adj {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--cream); font-size: 22px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .2s; line-height: 1; user-select: none;
+}
+.calc-adj:hover { border-color: var(--gold); color: var(--gold); }
+.calc-adj:disabled { opacity: 0.3; cursor: default; }
+.calc-num {
+  font-size: 52px; font-weight: 200; color: var(--gold);
+  min-width: 64px; text-align: center; line-height: 1;
+}
+.calc-range { font-size: 13px; color: var(--muted); }
+.calc-result {
+  padding-top: 36px; border-top: 1px solid var(--border);
+}
+.calc-res-row {
+  display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+}
+.calc-res-lbl {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.calc-res-total {
+  font-size: 44px; font-weight: 200; color: var(--gold);
+  letter-spacing: -0.02em; line-height: 1;
+}
+.calc-res-total small { font-size: 20px; color: var(--muted); font-weight: 400; }
+.calc-res-per { font-size: 26px; font-weight: 300; color: var(--cream); line-height: 1; }
+.calc-res-per small { font-size: 14px; color: var(--muted); font-weight: 400; }
+.calc-res-row .btn { margin-left: auto; }
+@media (max-width: 900px) {
+  .calc-tabs { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .calc { padding: 28px 20px; }
+  .calc-res-row { gap: 24px; }
+  .calc-res-total { font-size: 34px; }
+  .calc-res-row .btn { margin-left: 0; width: 100%; justify-content: center; }
+}
 
 /* ---------- INCLUDED ---------- */
 .included {
@@ -1217,7 +1239,7 @@ section { padding: 130px 0; position: relative; }
     <p class="hero-sub">Персональные парения по методике BARDO — после которых больше не захочется в другие бани. Русская и сакская бани на высоте 1100 метров над уровнем моря, где весь Алматы как на ладони.</p>
     <div class="hero-actions">
       <a href="#programs" class="btn btn-primary">Посмотреть программы и цены</a>
-      <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="btn btn-wa">Спросить в WhatsApp</a>
+      <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-wa">Спросить в WhatsApp</a>
     </div>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -1246,7 +1268,7 @@ section { padding: 130px 0; position: relative; }
     <div class="whyus-grid">
       <div class="whyus-text fade-up">
         <span class="eyebrow">О нас</span>
-        <h2>Мы очень мало знаем, какой баня может быть на самом деле.</h2>
+        <h2>Большинство так и не поняло, каким может быть настоящее парение.</h2>
         <p>Для многих баня выглядит примерно одинаково: шумное застолье, алкоголь, разговоры — так что иногда человек <strong>даже до парной не доходит</strong>. Или другая крайность — соревнование, кто дольше выдержит жар и пересидит остальных.</p>
         <p>Но настоящее парение — совсем не про это.</p>
         <p>Наша задача — внимательно провести человека через парение: <strong>мягко прогреть тело, вовремя охладить, дать правильный контраст</strong> и привести в состояние глубокого расслабления.</p>
@@ -1312,7 +1334,7 @@ section { padding: 130px 0; position: relative; }
       </div>
 
       <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5650.JPG');"></div>
+        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5650.JPG'); background-position: center bottom;"></div>
         <div class="tradition-body">
           <div class="tradition-num">Контраст</div>
           <h3>Холодная купель</h3>
@@ -1379,70 +1401,63 @@ section { padding: 130px 0; position: relative; }
     <h2 class="section-title fade-up">4 формата — от пары до большой компании</h2>
     <p class="section-subtitle fade-up">В цену входят бани, веники, чай, мёд, халаты и банные принадлежности. Парят пармастера трёх уровней: 1-й категории, ТОП-категории и лично основатель — Дмитрий Дишанди.</p>
 
-    <div class="programs-grid">
+    <div class="calc fade-up">
 
-      <div class="program fade-up">
-        <h3 class="program-name">Пар для пар или друга</h3>
-        <div class="program-meta">
-          <span>1–3 человека</span><span>до 4 часов</span>
+      <!-- Шаг 1: Программа -->
+      <div class="calc-step">
+        <div class="calc-step-label">1. Выберите программу</div>
+        <div class="calc-tabs">
+          <button class="calc-tab active" type="button"
+            data-price="60000" data-type="pp" data-min="4" data-max="8">
+            <span class="ct-name">BARDO</span>
+            <span class="ct-meta">4–8 чел · до 6 часов</span>
+            <span class="ct-price">60 000 ₸ / чел</span>
+          </button>
+          <button class="calc-tab" type="button"
+            data-price="200000" data-type="fixed" data-min="1" data-max="3">
+            <span class="ct-name">Пар для пар</span>
+            <span class="ct-meta">1–3 чел · до 4 часов</span>
+            <span class="ct-price">200 000 ₸ за компанию</span>
+          </button>
+          <button class="calc-tab" type="button"
+            data-price="40000" data-type="pp" data-min="4" data-max="8">
+            <span class="ct-name">BARDO light</span>
+            <span class="ct-meta">4–8 чел · до 4 часов</span>
+            <span class="ct-price">40 000 ₸ / чел</span>
+          </button>
+          <button class="calc-tab" type="button"
+            data-price="45000" data-type="pp" data-min="9" data-max="15">
+            <span class="ct-name">Баня номадов</span>
+            <span class="ct-meta">9–15 чел · до 6 часов</span>
+            <span class="ct-price">45 000 ₸ / чел</span>
+          </button>
         </div>
-        <p class="program-desc">Камерный формат для пары или с другом. Первый пар в 2 захода, персональное парение по методике BARDO каждому гостю, завершающий пар, горячий чан, холодная купель, сенная кровать, горячее блюдо на компанию.</p>
-        <div class="program-price">
-          <div>
-            <div class="lbl">за компанию · 1–3 чел</div>
-            <div class="lbl-extra">парят пармастера ТОП-категории</div>
-          </div>
-          <div class="val">200 000 <small>₸</small></div>
-        </div>
-        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
       </div>
 
-      <div class="program featured fade-up">
-        <h3 class="program-name">BARDO</h3>
-        <div class="program-meta">
-          <span>4–8 человек</span><span>до 6 часов</span>
+      <!-- Шаг 2: Количество людей -->
+      <div class="calc-step" id="calc-people-step">
+        <div class="calc-step-label">2. Сколько человек?</div>
+        <div class="calc-stepper">
+          <button class="calc-adj" id="calc-minus" type="button">−</button>
+          <span class="calc-num" id="calc-num">4</span>
+          <button class="calc-adj" id="calc-plus" type="button">+</button>
+          <span class="calc-range" id="calc-range">(4–8 чел)</span>
         </div>
-        <p class="program-desc">Главная программа. Аренда русской и сакской бань, прогрев и два общих парения, персональное парение каждому с купелью Bardo floating (20–30 мин), горячий чан, холодная купель, горячее блюдо на компанию.</p>
-        <div class="program-price">
-          <div>
-            <div class="lbl">с человека</div>
-            <div class="lbl-extra">парят пармастера ТОП-категории</div>
-          </div>
-          <div class="val">60 000 <small>₸</small></div>
-        </div>
-        <a href="#contacts" class="btn btn-primary">Забронировать</a>
       </div>
 
-      <div class="program fade-up">
-        <h3 class="program-name">BARDO light</h3>
-        <div class="program-meta">
-          <span>4–8 человек</span><span>до 4 часов</span>
-        </div>
-        <p class="program-desc">Облегчённый формат. Аренда русской и сакской бани, 3 групповых парения, горячий чан, холодная купель, сенная кровать, чай, мёд, снеки. Персональные парения и горячее блюдо — по желанию, за доплату.</p>
-        <div class="program-price">
+      <!-- Результат -->
+      <div class="calc-result">
+        <div class="calc-res-row">
           <div>
-            <div class="lbl">с человека</div>
-            <div class="lbl-extra">парят пармастера 1-й категории</div>
+            <div class="calc-res-lbl">Итого за компанию</div>
+            <div class="calc-res-total"><span id="calc-total">240 000</span> <small>₸</small></div>
           </div>
-          <div class="val">40 000 <small>₸</small></div>
-        </div>
-        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
-      </div>
-
-      <div class="program fade-up">
-        <h3 class="program-name">Баня номадов</h3>
-        <div class="program-meta">
-          <span>9–15 человек</span><span>до 6 часов</span>
-        </div>
-        <p class="program-desc">Групповой формат для большой компании. Две бани, 3 групповых парения, горячий чан, холодная купель, горячий тапчан, горячее блюдо на компанию. Персональные парения — по желанию.</p>
-        <div class="program-price">
           <div>
-            <div class="lbl">с человека</div>
-            <div class="lbl-extra">парят пармастера 1-й категории</div>
+            <div class="calc-res-lbl">На человека</div>
+            <div class="calc-res-per"><span id="calc-per">60 000</span> <small>₸</small></div>
           </div>
-          <div class="val">45 000 <small>₸</small></div>
+          <a href="#contacts" class="btn btn-primary">Забронировать →</a>
         </div>
-        <a href="#contacts" class="btn btn-ghost">Забронировать</a>
       </div>
 
     </div>
@@ -1457,9 +1472,9 @@ section { padding: 130px 0; position: relative; }
 <section id="included" class="included steam-section">
   <div class="container">
     <div class="included-header fade-up">
-      <span class="eyebrow">Что входит в цену</span>
-      <h2 class="section-title">Что входит в стоимость</h2>
-      <p class="section-subtitle" style="margin: 0 auto;">Веники, чай, мёд, халаты и все банные принадлежности уже в цене. Привозить с собой ничего не нужно.</p>
+      <span class="eyebrow">Что может входить в стоимость</span>
+      <h2 class="section-title">Что МОЖЕТ входить в стоимость</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">Точный состав зависит от выбранной программы. Уточните при бронировании — подберём всё под вас.</p>
     </div>
 
     <div class="included-grid">
@@ -1661,7 +1676,7 @@ section { padding: 130px 0; position: relative; }
     <h2>Напишите в WhatsApp — за 5 минут подберём вариант</h2>
     <p>Расскажете, сколько человек, повод и бюджет. Предложим формат, проверим свободные даты, держим слот 24 часа без предоплаты.</p>
     <div class="cta-actions">
-      <a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20узнать%20про%20программы" class="btn btn-wa">Написать в WhatsApp</a>
+      <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-wa">Написать в WhatsApp</a>
       <a href="tel:+77070320577" class="btn btn-primary">Позвонить: +7 707 032 0577</a>
     </div>
   </div>
@@ -1816,7 +1831,7 @@ section { padding: 130px 0; position: relative; }
 </footer>
 
 <!-- WhatsApp floating button -->
-<a href="https://wa.me/77070320577?text=Здравствуйте,%20хочу%20забронировать%20Dishandi" class="wa-float" title="Написать в WhatsApp" aria-label="Написать в WhatsApp">
+<a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="wa-float" title="Написать в WhatsApp" aria-label="Написать в WhatsApp">
   <svg viewBox="0 0 24 24" width="32" height="32" fill="#fff" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.582 0 11.945-5.335 11.948-11.893a11.821 11.821 0 00-3.421-8.401"/>
   </svg>
@@ -1857,6 +1872,56 @@ document.querySelectorAll('.faq-q').forEach(q => {
     q.setAttribute('aria-expanded', item.classList.contains('open'));
   });
 });
+
+// ===== Calculator =====
+(function() {
+  const tabs = document.querySelectorAll('.calc-tab');
+  const minusBtn = document.getElementById('calc-minus');
+  const plusBtn = document.getElementById('calc-plus');
+  const numEl = document.getElementById('calc-num');
+  const rangeEl = document.getElementById('calc-range');
+  const totalEl = document.getElementById('calc-total');
+  const perEl = document.getElementById('calc-per');
+  const peopleStep = document.getElementById('calc-people-step');
+  if (!tabs.length) return;
+
+  let prog = { price: 60000, type: 'pp', min: 4, max: 8 };
+  let people = 4;
+
+  function fmt(n) { return n.toLocaleString('ru-RU'); }
+
+  function render() {
+    people = Math.max(prog.min, Math.min(prog.max, people));
+    numEl.textContent = people;
+    rangeEl.textContent = '(' + prog.min + '–' + prog.max + ' чел)';
+    const total = prog.type === 'fixed' ? prog.price : prog.price * people;
+    const per = prog.type === 'fixed' ? Math.round(prog.price / people) : prog.price;
+    totalEl.textContent = fmt(total);
+    perEl.textContent = fmt(per);
+    minusBtn.disabled = people <= prog.min;
+    plusBtn.disabled = people >= prog.max;
+    peopleStep.style.opacity = prog.type === 'fixed' ? '0.6' : '1';
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      prog = {
+        price: +tab.dataset.price,
+        type: tab.dataset.type,
+        min: +tab.dataset.min,
+        max: +tab.dataset.max
+      };
+      people = prog.min;
+      render();
+    });
+  });
+
+  minusBtn.addEventListener('click', function() { people--; render(); });
+  plusBtn.addEventListener('click', function() { people++; render(); });
+  render();
+})();
 
 // ===== Yandex.Metrica goal helper =====
 function ymGoal(goal) {
