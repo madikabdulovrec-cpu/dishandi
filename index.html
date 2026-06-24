@@ -1113,21 +1113,31 @@ section { padding: 64px 0; position: relative; }
   .section-subtitle { margin-bottom: 40px; }
   .rules { padding: 64px 0; }
 
-  /* Hero */
+  /* Hero mobile — контент вверху, фото видно снизу */
+  .hero { align-items: flex-start; min-height: 100svh; }
+  .hero-bg {
+    background:
+      linear-gradient(to bottom,
+        rgba(28,20,16,0.82) 0%,
+        rgba(28,20,16,0.60) 55%,
+        rgba(28,20,16,0.30) 100%
+      ),
+      url('banya_content/01_photos/panorama.jpg') center 30%/cover;
+  }
   .hero h1 .h1-line { white-space: normal; }
   .hero-content { padding-top: 88px; }
-  .hero h1 { margin-top: 20px; }
-  .hero-divider { margin: 32px 0; }
-  .hero-sub { margin-bottom: 36px; font-size: 16px; }
-  .hero-actions { flex-direction: column; margin-bottom: 52px; gap: 12px; }
+  .hero h1 { margin-top: 16px; }
+  .hero-divider { margin: 24px 0; }
+  .hero-sub { margin-bottom: 28px; font-size: 15px; }
+  .hero-actions { flex-direction: column; margin-bottom: 36px; gap: 10px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
   .hero-meta {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 28px 16px;
-    padding-top: 32px;
+    gap: 20px 16px;
+    padding-top: 24px;
   }
-  .hero-meta-item .num { font-size: 38px; }
+  .hero-meta-item .num { font-size: 34px; }
 
   /* Steam — reduce render cost */
   .steam-section::before, .steam-section::after {
