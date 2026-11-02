@@ -1468,5 +1468,54 @@ document.querySelectorAll('a[href^="tel:"]').forEach(a => {
 });
 </script>
 
+<script>
+// ===== Источник из ИИ-ассистента (ChatGPT и др.) -> пометка в сообщении WhatsApp =====
+// ChatGPT добавляет к ссылкам utm_source=chatgpt.com, а его приложение часто не передаёт
+// referrer, поэтому проверяем и метку, и сайт-источник. Источник помним 30 дней: человек
+// может вернуться позже, набрав адрес вручную, - пометка всё равно останется.
+(function () {
+  var AI = [
+    { re: /chatgpt|openai/i, name: 'ChatGPT' },
+    { re: /perplexity/i, name: 'Perplexity' },
+    { re: /gemini/i, name: 'Gemini' },
+    { re: /copilot/i, name: 'Copilot' },
+    { re: /claude|anthropic/i, name: 'Claude' }
+  ];
+  var KEY = 'dsh_ai_src', TTL = 30 * 24 * 3600 * 1000;
+  var DEF = 'Здравствуйте! хочу забронировать DiShandi SPA.';
+
+  function detect() {
+    var src = '', ref = '';
+    try { src = new URLSearchParams(location.search).get('utm_source') || ''; } catch (e) {}
+    try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+    for (var i = 0; i < AI.length; i++) {
+      if ((src && AI[i].re.test(src)) || (ref && AI[i].re.test(ref))) return AI[i].name;
+    }
+    return '';
+  }
+
+  var name = detect();
+  try {
+    if (name) {
+      localStorage.setItem(KEY, JSON.stringify({ n: name, t: Date.now() }));
+    } else {
+      var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && saved.n && Date.now() - saved.t < TTL) name = saved.n;
+    }
+  } catch (e) {}
+  if (!name) return;
+
+  var mark = '\n\n(источник: ' + name + ')';
+  document.querySelectorAll('a[href^="https://wa.me"]').forEach(function (a) {
+    try {
+      var u = new URL(a.href);
+      var text = u.searchParams.get('text') || DEF;
+      if (text.indexOf('(источник:') !== -1) return;
+      a.href = u.origin + u.pathname + '?text=' + encodeURIComponent(text + mark);
+    } catch (e) {}
+  });
+})();
+</script>
+
 </body>
 </html>
