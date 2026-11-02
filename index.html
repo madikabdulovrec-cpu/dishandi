@@ -97,7 +97,9 @@ h1, h2, h3, h4 {
   font-weight: 300;
   line-height: 1.18;
   letter-spacing: -0.015em;
+  text-wrap: balance; /* ровные строки в заголовках, без висящих слов */
 }
+p { text-wrap: pretty; }
 .accent { color: var(--gold); }
 .eyebrow {
   display: inline-block;
@@ -123,9 +125,24 @@ h1, h2, h3, h4 {
   margin-bottom: 64px;
   line-height: 1.7;
 }
+/* «Наши пространства»: подзаголовок в две строки на широких экранах */
+.spaces-sub { max-width: none; text-wrap: pretty; }
+.spaces-sub .nowrap { white-space: nowrap; }
+@media (min-width: 1000px) {
+  .spaces-sub .sub-line { display: block; }
+}
+@media (min-width: 641px) and (max-width: 999px) {
+  .spaces-sub { text-wrap: balance; }
+}
 
 .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
 section { padding: 64px 0; position: relative; }
+/* Граница между блоками — тонкая золотая линия, тающая к краям */
+section + section {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent) 1;
+}
+.hero + section { border: 0; }
 
 .btn {
   display: inline-flex;
@@ -151,11 +168,6 @@ section { padding: 64px 0; position: relative; }
   background: rgba(217, 183, 121, 0.04);
 }
 .btn-ghost:hover { background: rgba(217, 183, 121, 0.1); border-color: var(--gold); }
-.btn-wa {
-  background: #25d366;
-  color: white;
-}
-.btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
 
 /* ---------- NAV ---------- */
 .nav {
@@ -207,102 +219,99 @@ section { padding: 64px 0; position: relative; }
 .nav-cta { display: flex; align-items: center; gap: 16px; }
 .nav-phone { font-weight: 600; font-size: 14px; white-space: nowrap; }
 .nav-phone span { color: var(--gold); }
-.burger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.burger { display: none; flex-direction: column; gap: 5px; padding: 14px 10px; margin-right: -10px; } /* зона нажатия 44×44 */
 .burger span { width: 24px; height: 2px; background: var(--cream); transition: transform .3s ease, opacity .3s ease; }
 
 /* ---------- HERO ---------- */
 .hero {
   min-height: 100vh;
+  min-height: 100svh;
   padding: 0;
-  display: flex; align-items: center;
+  display: flex; align-items: flex-end;
   position: relative;
   overflow: hidden;
 }
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    linear-gradient(100deg, rgba(28,20,16,0.88) 0%, rgba(28,20,16,0.55) 55%, rgba(28,20,16,0.74) 100%),
+    linear-gradient(to bottom, rgba(28,20,16,0.45) 0%, rgba(28,20,16,0) 20%),
+    linear-gradient(to top, rgba(28,20,16,0.92) 0%, rgba(28,20,16,0.62) 28%, rgba(28,20,16,0.22) 55%, rgba(28,20,16,0) 75%),
+    radial-gradient(ellipse 58% 52% at 20% 74%, rgba(28,20,16,0.55) 0%, rgba(28,20,16,0.25) 55%, rgba(28,20,16,0) 100%),
     url('banya_content/01_photos/panorama.jpg') center 42%/cover;
   z-index: 0;
-}
-.hero-bg::after {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, rgba(217, 183, 121, 0.12) 0%, transparent 55%);
 }
 .hero-bg::before {
   content: ''; position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 260px;
+  height: 200px;
   background: linear-gradient(to bottom, transparent, #1c1410);
-  z-index: 2;
   pointer-events: none;
 }
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-top: 100px;
-  max-width: 1280px;
   width: 100%;
-  text-align: left;
+  padding-top: 140px;
 }
 .hero h1 {
-  font-size: clamp(28px, 4.6vw, 60px);
-  line-height: 1.1;
-  margin: 28px 0 0;
+  font-size: clamp(30px, 4.8vw, 66px);
+  line-height: 1.08;
   font-weight: 200;
-  letter-spacing: -0.015em;
-  max-width: 100%;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 28px rgba(15, 10, 8, 0.6);
 }
 .hero h1 .h1-line {
   display: block;
   white-space: nowrap;
 }
-.hero-divider {
-  width: 56px;
-  height: 1px;
-  background: var(--gold);
-  opacity: 0.55;
-  margin: 52px 0;
-}
+.hero h1 .accent { white-space: nowrap; }
 .hero-sub {
-  font-size: 17px;
-  color: var(--muted);
-  max-width: 680px;
-  margin: 0 0 56px;
-  line-height: 1.85;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(237, 228, 211, 0.82);
+  max-width: 640px;
+  margin-bottom: 40px;
+  text-shadow: 0 1px 14px rgba(15, 10, 8, 0.75);
 }
 .hero-actions {
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 88px;
-  justify-content: flex-start;
+  gap: 14px;
+  margin-bottom: 72px;
 }
-.hero-meta {
+.hero-actions .btn-ghost { background: rgba(28, 20, 16, 0.35); }
+.hero-actions .btn-ghost:hover { background: rgba(217, 183, 121, 0.1); }
+.hero-facts {
+  list-style: none;
   display: flex;
-  gap: 56px;
-  padding-top: 40px;
+  flex-wrap: wrap;
+  gap: 12px 0;
+  padding: 24px 0 36px;
   border-top: 1px solid var(--border);
-  justify-content: flex-start;
-  max-width: 920px;
-  margin: 0;
 }
-.hero-meta-item { text-align: left; }
-.hero-meta-item .num {
-  font-family: 'Manrope', sans-serif;
-  font-size: 42px;
-  color: var(--gold);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.025em;
-}
-.hero-meta-item .num small { font-size: 18px; color: var(--gold); font-family: 'Manrope', sans-serif; font-weight: 300; }
-.hero-meta-item .lbl {
-  font-size: 12px;
+.hero-facts li {
+  font-size: 13px;
   color: var(--muted);
-  margin-top: 10px;
-  letter-spacing: 0.05em;
-  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding: 0 28px;
+  border-left: 1px solid var(--border);
+}
+.hero-facts li:first-child { padding-left: 0; border-left: none; }
+.hero-facts b { color: var(--cream); font-weight: 500; margin-right: 6px; }
+@media (max-width: 1100px) {
+  /* Цифры — сеткой, снизу место под плавающую кнопку WhatsApp */
+  .hero-facts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 22px 0 104px;
+  }
+  .hero-facts li { padding: 0; border-left: none; font-size: 12px; line-height: 1.45; }
+  .hero-facts b { display: block; font-size: 16px; margin: 0 0 2px; }
+}
+@media (max-width: 1100px) and (orientation: portrait) {
+  .hero-bg { background-position: 40% center; }
 }
 
 /* ---------- WHY-US SECTION ---------- */
@@ -315,12 +324,21 @@ section { padding: 64px 0; position: relative; }
   gap: 80px;
   align-items: center;
 }
-.whyus-text h2 {
-  font-size: clamp(26px, 4.8vw, 52px);
-  margin-bottom: 28px;
+.whyus-head { margin-bottom: 56px; }
+.whyus-head h2 {
+  font-size: min(52px, calc((100vw - 96px) * 0.05)); /* первая строка всегда помещается в ширину */
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.2;
+}
+.whyus-head .h2-line { display: block; white-space: nowrap; }
+.whyus-head .nowrap { white-space: nowrap; }
+.whyus-head .br-m { display: none; } /* перенос после тире — только на телефонах */
+@media (max-width: 640px) {
+  .whyus-head { margin-bottom: 32px; }
+  .whyus-head h2 { font-size: clamp(26px, 7vw, 32px); text-wrap: balance; }
+  .whyus-head .h2-line { display: inline; white-space: normal; }
+  .whyus-head .br-m { display: inline; }
 }
 .whyus-text p {
   color: var(--muted);
@@ -333,8 +351,8 @@ section { padding: 64px 0; position: relative; }
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 4/5;
-  background: url('banya_content/01_photos/IMG_5655.jpg') center/cover;
+  aspect-ratio: 4/3;
+  background: url('banya_content/01_photos/IMG_5655.jpg') center 77%/cover;
 }
 .whyus-image::after {
   content: ''; position: absolute; inset: 0;
@@ -353,52 +371,6 @@ section { padding: 64px 0; position: relative; }
   letter-spacing: -0.01em;
 }
 .whyus-image-cap .sub { color: var(--gold); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; margin-top: 6px; }
-
-/* ---------- TWO TRADITIONS ---------- */
-.traditions-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-.tradition {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0;
-  position: relative;
-  transition: all .4s ease;
-}
-.tradition:hover { border-color: var(--gold); transform: translateY(-4px); }
-.tradition-img {
-  height: 280px;
-  background-size: cover; background-position: center;
-  position: relative;
-  border-radius: 8px 8px 0 0;
-  overflow: hidden;
-}
-.tradition-img::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(37,26,20,0.85) 100%);
-}
-.tradition-body { padding: 36px; }
-.tradition-num {
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 14px;
-  font-weight: 500;
-}
-.tradition-body h3 { font-size: 32px; margin-bottom: 16px; }
-.tradition-body p { color: var(--muted); font-size: 15px; line-height: 1.7; }
-.tradition-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
-.tradition-tags span {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 6px 12px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--muted);
-}
 
 /* ---------- HOW IT GOES ---------- */
 .how {
@@ -599,30 +571,6 @@ section { padding: 64px 0; position: relative; }
   .calc-res-row .btn { margin-left: 0; width: 100%; justify-content: center; }
 }
 
-/* ---------- INCLUDED ---------- */
-.included {
-  background: transparent;
-}
-.included-header { text-align: center; max-width: 760px; margin: 0 auto 64px; }
-.included-header .section-title { margin-bottom: 16px; }
-.included-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-.inc-item {
-  padding: 28px 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  text-align: center;
-  transition: all .3s ease;
-}
-.inc-item:hover { border-color: var(--gold); }
-.inc-icon { font-size: 28px; margin-bottom: 14px; }
-.inc-item .name { font-size: 14px; font-weight: 500; color: var(--cream); margin-bottom: 4px; }
-.inc-item .sub { font-size: 12px; color: var(--muted); }
-
 /* ---------- ATMOSPHERE / GALLERY ---------- */
 .atmosphere-grid {
   display: grid;
@@ -717,53 +665,6 @@ section { padding: 64px 0; position: relative; }
 .rules-inner p { color: var(--muted); font-size: 17px; line-height: 1.8; max-width: 740px; margin: 0 auto 16px; }
 .rules-inner p strong { color: var(--cream); font-weight: 500; }
 
-/* ---------- REVIEWS ---------- */
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.review {
-  padding: 40px 32px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  position: relative;
-}
-.review::before {
-  content: '"';
-  position: absolute; top: 8px; left: 24px;
-  font-family: 'Manrope', sans-serif;
-  font-size: 100px;
-  color: var(--gold);
-  opacity: 0.15;
-  line-height: 1;
-}
-.review-stars { color: var(--gold); margin-bottom: 16px; font-size: 14px; }
-.review-text {
-  font-family: 'Manrope', sans-serif;
-  font-size: 16px;
-  margin-bottom: 24px;
-  color: var(--cream);
-  line-height: 1.7;
-}
-.review-author {
-  display: flex; align-items: center; gap: 14px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-}
-.review-avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dim) 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700;
-  color: #1c1410;
-  font-size: 16px;
-}
-.review-name { font-weight: 500; font-size: 15px; }
-.review-meta { font-size: 12px; color: var(--muted); }
-
 /* ---------- FAQ ---------- */
 .faq-list { max-width: 100%; }
 .faq-item { border-bottom: 1px solid var(--border); }
@@ -814,100 +715,6 @@ section { padding: 64px 0; position: relative; }
   margin: 0 auto 40px;
 }
 .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
-/* ---------- CONTACTS ---------- */
-.contacts-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
-.contact-form {
-  background: var(--bg-card);
-  padding: 52px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-.contact-form h3 { font-size: 36px; margin-bottom: 8px; }
-.contact-form > p { color: var(--muted); font-size: 15px; margin-bottom: 32px; }
-.form-row { margin-bottom: 20px; }
-.form-row label {
-  display: block;
-  font-size: 11px;
-  color: var(--muted);
-  margin-bottom: 8px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-.form-row input, .form-row textarea, .form-row select {
-  width: 100%;
-  padding: 14px 16px;
-  background: var(--bg-deep);
-  border: 1px solid var(--border);
-  color: var(--cream);
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 16px;
-  transition: border-color .2s ease;
-}
-.form-row input:focus, .form-row textarea:focus, .form-row select:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-.form-row textarea { resize: vertical; min-height: 100px; }
-.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-disclaimer { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
-.form-success {
-  margin-top: 16px;
-  padding: 14px 18px;
-  background: rgba(37, 211, 102, 0.12);
-  border: 1px solid rgba(37, 211, 102, 0.4);
-  border-radius: 6px;
-  color: #cfeede;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.contact-info { padding: 16px 0; }
-.contact-photo {
-  height: 220px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  margin-bottom: 36px;
-  border: 1px solid var(--border);
-}
-.contact-info h3 { font-size: 36px; margin-bottom: 24px; }
-.contact-info > p { color: var(--muted); margin-bottom: 32px; }
-.info-block {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-  display: flex; gap: 20px; align-items: flex-start;
-}
-.info-block:last-of-type { border-bottom: none; }
-.info-icon {
-  width: 48px; height: 48px;
-  background: rgba(217, 183, 121, 0.08);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.info-lbl { font-size: 11px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
-.info-val { font-size: 17px; font-weight: 500; line-height: 1.4; }
-.info-val a:hover { color: var(--gold); }
-.socials { display: flex; gap: 12px; margin-top: 28px; }
-.socials a {
-  width: 44px; height: 44px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .3s ease;
-  font-weight: 600;
-  font-size: 12px;
-}
-.socials a:hover { background: var(--gold); color: #1c1410; border-color: var(--gold); }
 
 /* ---------- FOOTER ---------- */
 .footer {
@@ -995,10 +802,9 @@ section { padding: 64px 0; position: relative; }
 }
 
 /* Card under-glow — steam rising from beneath */
-.tradition, .addon { position: relative; }
+.addon { position: relative; }
 
 .program::after,
-.tradition::after,
 .addon::after {
   content: '';
   position: absolute;
@@ -1019,7 +825,6 @@ section { padding: 64px 0; position: relative; }
   animation: glow-pulse 4s ease-in-out infinite alternate;
 }
 .program:hover::after,
-.tradition:hover::after,
 .addon:hover::after {
   opacity: 1;
   transform: translateY(6px) scale(1.06);
@@ -1050,10 +855,8 @@ section { padding: 64px 0; position: relative; }
   transform: translateY(0);
 }
 
-/* ---------- MAP & REVIEWS CTA ---------- */
-.reviews-cta { text-align: center; margin-top: 44px; }
+/* ---------- MAP ---------- */
 .map-block {
-  margin-top: 56px;
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
@@ -1098,8 +901,7 @@ section { padding: 64px 0; position: relative; }
   .nav.menu-open .burger span:nth-child(2) { opacity: 0; }
   .nav.menu-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .whyus-grid { grid-template-columns: 1fr; gap: 48px; }
-  .programs-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-  .included-grid { grid-template-columns: repeat(3, 1fr); }
+  .programs-grid { grid-template-columns: repeat(2, 1fr); }
   .how-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
   .how-steps::before { display: none; }
   .atmosphere-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 220px 220px 220px; }
@@ -1113,31 +915,24 @@ section { padding: 64px 0; position: relative; }
   .section-subtitle { margin-bottom: 40px; }
   .rules { padding: 64px 0; }
 
-  /* Hero mobile — контент вверху, фото видно снизу */
-  .hero { align-items: flex-start; min-height: 100svh; }
+  /* Hero mobile — фото сверху (башня и пар), текст прижат к низу */
   .hero-bg {
     background:
-      linear-gradient(to bottom,
-        rgba(28,20,16,0.82) 0%,
-        rgba(28,20,16,0.60) 55%,
-        rgba(28,20,16,0.30) 100%
+      linear-gradient(to top,
+        rgba(28,20,16,0.94) 0%,
+        rgba(28,20,16,0.70) 34%,
+        rgba(28,20,16,0.22) 62%,
+        rgba(28,20,16,0.40) 100%
       ),
-      url('banya_content/01_photos/panorama.jpg') center 30%/cover;
+      url('banya_content/01_photos/panorama.jpg') 40% center/cover;
   }
   .hero h1 .h1-line { white-space: normal; }
-  .hero-content { padding-top: 88px; }
-  .hero h1 { margin-top: 16px; }
-  .hero-divider { margin: 24px 0; }
-  .hero-sub { margin-bottom: 28px; font-size: 15px; }
-  .hero-actions { flex-direction: column; margin-bottom: 36px; gap: 10px; }
+  .hero-content { padding-top: 120px; }
+  .hero h1 { margin-bottom: 18px; }
+  .hero-sub { font-size: 16px; margin-bottom: 28px; }
+  .hero-actions { flex-direction: column; gap: 10px; margin-bottom: 32px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
-  .hero-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 16px;
-    padding-top: 24px;
-  }
-  .hero-meta-item .num { font-size: 34px; }
+  .hero-facts { grid-template-columns: 1fr 1fr; padding-bottom: 84px; }
 
   /* Steam — reduce render cost */
   .steam-section::before, .steam-section::after {
@@ -1146,36 +941,25 @@ section { padding: 64px 0; position: relative; }
     animation: none;
     opacity: 0.6;
   }
-  .program::after, .tradition::after, .addon::after {
+  .program::after, .addon::after {
     filter: blur(14px);
     height: 35px;
     animation: none;
   }
 
   /* Grids */
-  .traditions-grid { grid-template-columns: 1fr; }
-  .programs-grid, .reviews-grid { grid-template-columns: 1fr; }
-  .included-grid { grid-template-columns: repeat(2, 1fr); }
-  .included-header { margin-bottom: 44px; }
+  .programs-grid { grid-template-columns: 1fr; }
   .how-steps { grid-template-columns: 1fr; gap: 32px; }
   .how-header { margin-bottom: 48px; }
-  .contacts-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .form-grid { grid-template-columns: 1fr; }
 
   /* Card paddings & headings */
   .program { padding: 30px 22px; }
   .program-name { font-size: 24px; }
-  .tradition-body { padding: 26px 22px; }
-  .tradition-body h3 { font-size: 26px; }
-  .tradition-img { height: 240px; }
-  .review { padding: 30px 24px; }
   .addon { flex-direction: column; gap: 20px; padding: 28px 24px; }
   .rules-inner { padding: 44px 24px; }
   .programs-note { padding: 20px 22px; margin-top: 32px; }
-  .contact-form { padding: 32px 22px; }
-  .contact-form h3, .contact-info h3 { font-size: 28px; }
 
   /* CTA */
   .cta-banner { padding: 72px 0; }
@@ -1188,7 +972,6 @@ section { padding: 64px 0; position: relative; }
   .faq-item.open .faq-a { max-height: 900px; }
 
   /* Map */
-  .map-block { margin-top: 40px; }
   .map-frame { height: 280px; }
   .map-bar { padding: 16px 18px; }
   .map-bar .btn { width: 100%; justify-content: center; }
@@ -1200,17 +983,10 @@ section { padding: 64px 0; position: relative; }
   section { padding: 56px 0; }
   .container { padding: 0 16px; }
   .rules { padding: 52px 0; }
-  .hero-content { padding-top: 78px; }
-  .hero-meta { gap: 24px 14px; }
-  .hero-meta-item .num { font-size: 33px; }
+  .hero-content { padding-top: 96px; }
   .program { padding: 26px 18px; }
-  .tradition-body { padding: 22px 18px; }
-  .tradition-img { height: 210px; }
-  .review { padding: 26px 20px; }
   .addon { padding: 24px 20px; }
   .rules-inner { padding: 36px 20px; }
-  .contact-form { padding: 26px 18px; }
-  .inc-item { padding: 20px 12px; }
   .cta-banner { padding: 58px 0; }
   .atmosphere-grid { grid-template-rows: repeat(3, 168px); gap: 12px; }
 }
@@ -1234,7 +1010,7 @@ section { padding: 64px 0; position: relative; }
     </div>
     <div class="nav-cta">
       <a href="tel:+77070320577" class="nav-phone"><span>☎</span> +7 707 032 0577</a>
-      <a href="#contacts" class="btn btn-primary">Забронировать</a>
+      <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-primary">Забронировать</a>
       <button class="burger"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -1244,44 +1020,30 @@ section { padding: 64px 0; position: relative; }
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="container hero-content">
-    <span class="eyebrow">Dishandi SPA · Кок-Тобе, Алматы</span>
     <h1><span class="h1-line">Баня, ради которой</span><span class="h1-line">поднимаются на <span class="accent">Кок-Тобе</span></span></h1>
-
-    <div class="hero-divider"></div>
-
-    <p class="hero-sub">Персональные парения по методике BARDO — после которых больше не захочется в другие бани. Русская и сакская бани на высоте 1100 метров над уровнем моря, где весь Алматы как на ладони.</p>
+    <p class="hero-sub">Персональные парения по методике BARDO — с видом на весь Алматы.</p>
     <div class="hero-actions">
       <a href="#programs" class="btn btn-primary">Посмотреть программы и цены</a>
-      <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-wa">Спросить в WhatsApp</a>
+      <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.142 1.595 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.582 0 11.945-5.335 11.948-11.893a11.821 11.821 0 00-3.421-8.401"/></svg> Спросить в WhatsApp</a>
     </div>
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="num">1100 <small>м</small></div>
-        <div class="lbl">над уровнем моря,<br>гора Кок-Тобе</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="num">2</div>
-        <div class="lbl">бани — русская<br>и сакская</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="num">25 <small>мин</small></div>
-        <div class="lbl">персональное<br>парение на гостя</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="num">4–6 <small>ч</small></div>
-        <div class="lbl">длительность<br>программы</div>
-      </div>
-    </div>
+    <ul class="hero-facts">
+      <li><b>1100 м</b>над уровнем моря</li>
+      <li><b>2 бани</b>русская и сакская</li>
+      <li><b>25 мин</b>персонального парения на гостя</li>
+      <li><b>4–6 ч</b>длительность программы</li>
+    </ul>
   </div>
 </section>
 
 <!-- ========== WHY US ========== -->
 <section id="whyus" class="whyus">
   <div class="container">
+    <div class="whyus-head fade-up">
+      <span class="eyebrow">О нас</span>
+      <h2><span class="h2-line">Баня может быть другой&nbsp;—<br class="br-m"> тихой, бережной</span> <span class="h2-line">и&nbsp;<span class="nowrap">по-настоящему</span> расслабляющей</span></h2>
+    </div>
     <div class="whyus-grid">
       <div class="whyus-text fade-up">
-        <span class="eyebrow">О нас</span>
-        <h2>Большинство так и не поняло, каким может быть настоящее парение.</h2>
         <p>Для многих баня выглядит примерно одинаково: шумное застолье, алкоголь, разговоры — так что иногда человек <strong>даже до парной не доходит</strong>. Или другая крайность — соревнование, кто дольше выдержит жар и пересидит остальных.</p>
         <p>Но настоящее парение — совсем не про это.</p>
         <p>Наша задача — внимательно провести человека через парение: <strong>мягко прогреть тело, вовремя охладить, дать правильный контраст</strong> и привести в состояние глубокого расслабления.</p>
@@ -1301,63 +1063,23 @@ section { padding: 64px 0; position: relative; }
   <div class="container">
     <span class="eyebrow fade-up">Наши пространства</span>
     <h2 class="section-title fade-up">Весь комплекс закрывается под вашу компанию</h2>
-    <p class="section-subtitle fade-up">Никаких чужих людей рядом. На высоте 1100 метров над Алматы — баня-юрта для групповых парений, русская баня для персональных, холодная купель, сенная кровать для отдыха и горячий чан с видом на город.</p>
+    <p class="section-subtitle spaces-sub fade-up"><span class="sub-line">Никаких чужих людей рядом. На высоте 1100 метров над Алматы&nbsp;— <span class="nowrap">баня-юрта</span> для групповых парений,</span> <span class="sub-line">русская баня для персональных, холодная купель, сенная кровать для отдыха и&nbsp;горячий чан с&nbsp;видом на&nbsp;город.</span></p>
 
-    <div class="traditions-grid">
-      <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5651.JPG');"></div>
-        <div class="tradition-body">
-          <div class="tradition-num">Персональные парения</div>
-          <h3>Русская баня</h3>
-          <p>Здесь проходят персональные парения по методике BARDO (авторская методика Д.&nbsp;Дишанди) — один на один с пармастером: прогрев, веники, контрастная купель, флоатинг.</p>
-          <div class="tradition-tags">
-            <span>До 8 человек</span>
-            <span>Дровяная печь</span>
-            <span>Один на один</span>
-          </div>
-        </div>
+    <div class="atmosphere-grid" id="atmosphere">
+      <div class="atmo-item large fade-up" style="background-image: url('banya_content/01_photos/IMG_5653.JPG');">
+        <div class="atmo-cap">Комната отдыха в&nbsp;юрте</div>
       </div>
-
-      <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5654.JPG');"></div>
-        <div class="tradition-body">
-          <div class="tradition-num">Групповые парения</div>
-          <h3>Баня-юрта</h3>
-          <p>Сакская баня в этническом стиле. Здесь проходят мягкие групповые прогревы — тело готовится к персональному парению.</p>
-          <div class="tradition-tags">
-            <span>До 20 человек</span>
-            <span>Сакская баня</span>
-            <span>Групповой прогрев</span>
-          </div>
-        </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5196.JPG');">
+        <div class="atmo-cap">Чайная церемония</div>
       </div>
-
-      <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5639.jpg');"></div>
-        <div class="tradition-body">
-          <div class="tradition-num">Под открытым небом</div>
-          <h3>Горячий чан</h3>
-          <p>Чан с горячей водой под открытым небом — с великолепным видом на ночной Алматы. Чтобы погреться и отдохнуть после парения.</p>
-          <div class="tradition-tags">
-            <span>Вид на Алматы</span>
-            <span>Свежий воздух</span>
-            <span>После парения</span>
-          </div>
-        </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');">
+        <div class="atmo-cap">Веники в&nbsp;русской бане</div>
       </div>
-
-      <div class="tradition fade-up">
-        <div class="tradition-img" style="background-image: url('banya_content/01_photos/IMG_5650.JPG'); background-position: center bottom;"></div>
-        <div class="tradition-body">
-          <div class="tradition-num">Контраст</div>
-          <h3>Холодная купель</h3>
-          <p>Освежающее погружение сразу после парения — для восстановления, тонуса и ярких ощущений. Та самая точка перезагрузки.</p>
-          <div class="tradition-tags">
-            <span>После парилки</span>
-            <span>Тонус</span>
-            <span>Восстановление</span>
-          </div>
-        </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5649.JPG');">
+        <div class="atmo-cap">Дрова и&nbsp;травы</div>
+      </div>
+      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5658.jpg');">
+        <div class="atmo-cap">Закат над Алматы</div>
       </div>
     </div>
   </div>
@@ -1469,7 +1191,7 @@ section { padding: 64px 0; position: relative; }
             <div class="calc-res-lbl">На человека</div>
             <div class="calc-res-per"><span id="calc-per">60 000</span> <small>₸</small></div>
           </div>
-          <a href="#contacts" class="btn btn-primary">Забронировать →</a>
+          <a href="https://wa.me/77070320577?text=Здравствуйте!%20хочу%20забронировать%20DiShandi%20SPA." class="btn btn-primary">Забронировать →</a>
         </div>
       </div>
 
@@ -1477,59 +1199,6 @@ section { padding: 64px 0; position: relative; }
 
     <div class="programs-note fade-up">
       <strong>Большая компания от 16 человек?</strong> Напишите в WhatsApp — соберём программу под вас, рассчитаем индивидуально.
-    </div>
-  </div>
-</section>
-
-<!-- ========== WHAT'S INCLUDED ========== -->
-<section id="included" class="included steam-section">
-  <div class="container">
-    <div class="included-header fade-up">
-      <span class="eyebrow">Что может входить в стоимость</span>
-      <h2 class="section-title">Что может входить в стоимость</h2>
-      <p class="section-subtitle" style="margin: 0 auto;">Точный состав зависит от выбранной программы. Уточните при бронировании — подберём всё под вас.</p>
-    </div>
-
-    <div class="included-grid">
-      <div class="inc-item fade-up"><div class="inc-icon">🏛️</div><div class="name">Две бани</div><div class="sub">Русская + баня-юрта</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🔥</div><div class="name">Горячий чан</div><div class="sub">На дровах, под небом</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">❄️</div><div class="name">Холодная купель</div><div class="sub">Контраст и флоатинг</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🌿</div><div class="name">6 веников</div><div class="sub">Дуб, пихта, можжевельник</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🛏️</div><div class="name">Сенная кровать</div><div class="sub">На травах</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🍵</div><div class="name">Чай</div><div class="sub">Чёрный, зелёный, травяной</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🍯</div><div class="name">Мёд и снеки</div><div class="sub">Орехи, сухофрукты</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🍲</div><div class="name">Горячее блюдо</div><div class="sub">Шорпа, плов или коктал</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">💧</div><div class="name">Вода</div><div class="sub">Питьевая и минеральная</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🧖</div><div class="name">Халаты, тапочки</div><div class="sub">Полотенца, шапочки</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🏔️</div><div class="name">Терраса</div><div class="sub">Панорама Алматы</div></div>
-      <div class="inc-item fade-up"><div class="inc-icon">🌾</div><div class="name">Травы для пара</div><div class="sub">Сезонный сбор</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== ATMOSPHERE ========== -->
-<section id="atmosphere">
-  <div class="container">
-    <span class="eyebrow fade-up">Фото</span>
-    <h2 class="section-title fade-up">Как у нас внутри</h2>
-    <p class="section-subtitle fade-up">Снято без фотошопа. Свет, посуда, ковры — всё, что увидите, когда приедете.</p>
-
-    <div class="atmosphere-grid">
-      <div class="atmo-item large fade-up" style="background-image: url('banya_content/01_photos/IMG_5653.JPG');">
-        <div class="atmo-cap">Комната отдыха в&nbsp;юрте</div>
-      </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5196.JPG');">
-        <div class="atmo-cap">Чайная церемония</div>
-      </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5198.JPG');">
-        <div class="atmo-cap">Веники в&nbsp;русской бане</div>
-      </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5649.JPG');">
-        <div class="atmo-cap">Дрова и&nbsp;травы</div>
-      </div>
-      <div class="atmo-item fade-up" style="background-image: url('banya_content/01_photos/IMG_5658.jpg');">
-        <div class="atmo-cap">Закат над Алматы</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1593,55 +1262,6 @@ section { padding: 64px 0; position: relative; }
   </div>
 </section>
 
-<!-- ========== REVIEWS ========== -->
-<section id="reviews">
-  <div class="container">
-    <span class="eyebrow fade-up">Отзывы</span>
-    <h2 class="section-title fade-up">Что пишут гости</h2>
-    <p class="section-subtitle fade-up">Рейтинг <strong class="accent">4.7</strong> на 2ГИС по 31 отзыву. Вот несколько из них.</p>
-
-    <div class="reviews-grid">
-      <div class="review fade-up">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">В этом месте всё просто на высшем уровне: топовый сервис, идеальная чистота, комфортный процесс парения.</p>
-        <div class="review-author">
-          <div class="review-avatar">Б</div>
-          <div>
-            <div class="review-name">Бауыржан Д.</div>
-            <div class="review-meta">2ГИС</div>
-          </div>
-        </div>
-      </div>
-      <div class="review fade-up">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Дмитрию и его команде — огромное спасибо. Отлетел в хорошем смысле слова. Рекомендую!</p>
-        <div class="review-author">
-          <div class="review-avatar">М</div>
-          <div>
-            <div class="review-name">Макс Авраменко</div>
-            <div class="review-meta">2ГИС</div>
-          </div>
-        </div>
-      </div>
-      <div class="review fade-up">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Лучшая баня, в которой я была, — здесь реально расслабляешься. А вид просто шикарный!</p>
-        <div class="review-author">
-          <div class="review-avatar">Г</div>
-          <div>
-            <div class="review-name">Гинчик К.</div>
-            <div class="review-meta">2ГИС</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="reviews-cta fade-up">
-      <a href="https://2gis.kz/almaty/firm/70000001098724181/tab/reviews" target="_blank" rel="noopener" class="btn btn-ghost">Читать все 31 отзыв на 2ГИС →</a>
-    </div>
-  </div>
-</section>
-
 <!-- ========== FAQ ========== -->
 <section id="faq" class="steam-section">
   <div class="container">
@@ -1686,96 +1306,6 @@ section { padding: 64px 0; position: relative; }
 <!-- ========== CONTACTS ========== -->
 <section id="contacts">
   <div class="container">
-    <div class="contacts-grid">
-      <form class="contact-form fade-up" id="bookingForm">
-        <h3>Бронирование</h3>
-        <p>Заполните форму — откроем WhatsApp с готовой заявкой. Ответим в течение 10 минут.</p>
-
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="f-name">Имя</label>
-            <input type="text" id="f-name" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
-          </div>
-          <div class="form-row">
-            <label for="f-phone">Телефон</label>
-            <input type="tel" id="f-phone" name="phone" placeholder="+7 ___ ___ __ __" autocomplete="tel" required>
-          </div>
-        </div>
-
-        <div class="form-grid">
-          <div class="form-row">
-            <label for="f-program">Программа</label>
-            <select id="f-program" name="program">
-              <option>BARDO — 60 000 ₸/чел (хит)</option>
-              <option>Пар для пар или друга — 200 000 ₸</option>
-              <option>BARDO light — 40 000 ₸/чел</option>
-              <option>Баня номадов — 45 000 ₸/чел</option>
-              <option>Не знаю, помогите выбрать</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label for="f-date">Дата</label>
-            <input type="date" id="f-date" name="date">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <label for="f-comment">Сколько человек и повод</label>
-          <textarea id="f-comment" name="comment" placeholder="Например: 4 человека, день рождения жены, нужен скраб и массаж"></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Отправить заявку в WhatsApp</button>
-        <div class="form-success" hidden>✓ Открываем WhatsApp с вашей заявкой — отправьте сообщение, и мы перезвоним в течение 10 минут.</div>
-        <p class="form-disclaimer">Нажимая кнопку, вы соглашаетесь с <a href="policy.html" style="color: var(--gold);">обработкой персональных данных</a>. Мы не передаём контакты третьим лицам и не звоним с рекламой.</p>
-      </form>
-
-      <div class="contact-info fade-up">
-        <div class="contact-photo" style="background-image: url('banya_content/01_photos/IMG_5652.JPG');"></div>
-        <span class="eyebrow">Контакты</span>
-        <h3>Как с нами связаться</h3>
-        <p>Быстрее всего — WhatsApp. Отвечаем в течение 10 минут в рабочее время.</p>
-
-        <div class="info-block">
-          <div class="info-icon">📍</div>
-          <div>
-            <div class="info-lbl">Адрес</div>
-            <div class="info-val">СТ Коктобе, 18 · гора Кок-Тобе<br>Медеуский район, Алматы</div>
-          </div>
-        </div>
-
-        <div class="info-block">
-          <div class="info-icon">☎</div>
-          <div>
-            <div class="info-lbl">Телефон</div>
-            <div class="info-val"><a href="tel:+77070320577">+7 707 032 0577</a></div>
-          </div>
-        </div>
-
-        <div class="info-block">
-          <div class="info-icon">💬</div>
-          <div>
-            <div class="info-lbl">WhatsApp</div>
-            <div class="info-val"><a href="https://wa.me/77070320577">Написать в WhatsApp →</a></div>
-          </div>
-        </div>
-
-        <div class="info-block">
-          <div class="info-icon">🕐</div>
-          <div>
-            <div class="info-lbl">Часы работы</div>
-            <div class="info-val">Ежедневно 10:00 — 23:00<br>По предварительной записи</div>
-          </div>
-        </div>
-
-        <div class="socials">
-          <a href="#" title="Instagram">IG</a>
-          <a href="#" title="TikTok">TT</a>
-          <a href="#" title="YouTube">YT</a>
-          <a href="#" title="Telegram">TG</a>
-        </div>
-      </div>
-    </div>
-
     <div class="map-block fade-up">
       <iframe class="map-frame" src="https://maps.google.com/maps?q=43.22321,76.980198&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Карта — Dishandi SPA на Кок-Тобе"></iframe>
       <div class="map-bar">
@@ -1817,8 +1347,8 @@ section { padding: 64px 0; position: relative; }
       <div>
         <h4>Контакты</h4>
         <ul>
-          <li>+7 707 032 0577</li>
-          <li>WhatsApp</li>
+          <li><a href="tel:+77070320577">+7 707 032 0577</a></li>
+          <li><a href="https://wa.me/77070320577">WhatsApp</a></li>
           <li>СТ Коктобе, 18 · Алматы</li>
           <li>Ежедневно 10:00 — 23:00</li>
         </ul>
@@ -1936,32 +1466,6 @@ document.querySelectorAll('a[href^="https://wa.me"]').forEach(a => {
 document.querySelectorAll('a[href^="tel:"]').forEach(a => {
   a.addEventListener('click', () => ymGoal('phone_click'));
 });
-
-// ===== Booking form -> WhatsApp =====
-const bookingForm = document.getElementById('bookingForm');
-if (bookingForm) {
-  bookingForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const val = (n) => { const el = bookingForm.querySelector('[name="' + n + '"]'); return el ? el.value.trim() : ''; };
-    const lines = [
-      'Здравствуйте! Заявка с сайта Dishandi SPA:',
-      '',
-      'Имя: ' + val('name'),
-      'Телефон: ' + val('phone'),
-      'Программа: ' + val('program')
-    ];
-    if (val('date')) lines.push('Дата: ' + val('date'));
-    if (val('comment')) lines.push('Детали: ' + val('comment'));
-
-    ymGoal('form_submit');
-    window.open('https://wa.me/77070320577?text=' + encodeURIComponent(lines.join('\n')), '_blank');
-
-    const ok = bookingForm.querySelector('.form-success');
-    if (ok) ok.hidden = false;
-    const btn = bookingForm.querySelector('button[type="submit"]');
-    if (btn) btn.textContent = 'Заявка отправлена ✓';
-  });
-}
 </script>
 
 </body>
